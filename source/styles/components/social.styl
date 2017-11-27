@@ -1,0 +1,30 @@
+.social {
+  white-space: nowrap;
+  width: auto;
+  padding: 0;
+  margin: 0;
+
+  font-size: 0;
+
+  &-item {
+    display: inline-block;
+    vertical-align: top;
+
+    a {
+      display: inline-block;
+      size: 54px;
+
+      background: transparent url('') no-repeat center;
+      background-size: contain;
+
+      cursor: pointer;
+
+      &[aria-label="facebook"] {
+        background-image: url('../images/icons/facebook.svg')
+      }
+      &[aria-label="twitter"] {
+        background-image: url('../images/icons/twitter.svg')
+      }
+    }
+  }
+}

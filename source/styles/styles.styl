@@ -1,0 +1,98 @@
+@require './common/variables';
+@require './common/fonts';
+@require './libs/*.css';
+
+html, body {
+  height: 100%;
+}
+body {
+  min-width: 1024px;
+  width: 100%;
+
+  font-family: 'Rubik', 'Arial', sans-serif;
+  box-sizing: border-box;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a, a:hover, a:focus {
+    text-decoration: none;
+  }
+}
+main {
+  max-width: 1440px;
+  min-width: 1024px;
+  margin: 0 auto;
+}
+.container {
+  position: relative;
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+
+// для большей доступности сайта на специальных устройствах
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+.ng-modal-dialog {
+  padding: 40px 10px 10px;
+  border-radius: 5px;
+}
+.ng-modal-close-x {
+  visibility: hidden;
+}
+.ng-modal-close {
+  top: 10px;
+  right: 10px;
+
+  width: 30px;
+  height: 30px;
+  padding: 5px;
+  border-radius: 3px;
+
+  font-size: 0;
+  background: #d72218;
+
+  &::after,
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    size: 3px 20px;
+    margin: auto;
+
+    background: #ffffff;
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
+  &::after {
+    transform: rotate(45deg);
+  }
+}
+.ng-modal-title {
+  margin-top: -30px;
+  border-bottom: none;
+
+  color: $bg-color;
+  font-family: $proxima;
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 42px;
+  text-shadow: 0 2px 7px rgba(0, 0, 0, 0.5);
+}
+@require './common/page-layout';
+@require './common/*';
+@require './components/*';

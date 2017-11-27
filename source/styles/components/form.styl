@@ -1,0 +1,77 @@
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+
+  size: 100% auto;
+  padding: 25px 10px 32px;
+
+
+  &__heading {
+    flex: 1 0 auto;
+    margin: 0 5px;
+
+    font-family: $proxima;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    color: $text-color;
+  }
+  &-group {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    margin-right: 5px;
+  }
+  &-fieldset {
+    padding: 0;
+    margin-right: 20px;
+    border: none;
+
+    &--username {
+      width: 165px;
+    }
+    &--mail {
+      width: 286px;
+    }
+  }
+  &-fieldset__label {
+    display: block;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.8;
+    color: $text-color;
+  }
+  &-fieldset__input {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid $text-color;
+    font-size: 14px;
+    line-height: 1;
+    color: $text-color;
+
+    background: transparent;
+
+    &.ng-dirty.ng-invalid:not(:focus) {
+      border-color: $red;
+      color: $red;
+    }
+  }
+
+  &__submit {
+    margin-left: 28px;
+    padding: 5px 22px;
+    border: 2px solid $text-color;
+    border-radius: 2px;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+    color: $text-color
+    background: transparent;
+  }
+}

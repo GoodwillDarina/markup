@@ -1,0 +1,37 @@
+.footer {
+  padding: 60px 0 72px;
+  background-color: $bg-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('../images/footer.png'), linear-gradient(135deg, #1e2b6c 50%, #0c8bcd);
+  box-shadow: 0 -1px 7px 0 rgba(0, 0, 0, 0.5);
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  &-social.social {
+    margin-bottom: -10px;
+    margin-right: 2px;
+  }
+  &-form {
+    .form {
+      justify-content: flex-start;
+
+      padding: 0;
+    }
+    .form__heading {
+      width: 100%;
+      margin: 0 0 32px;
+    }
+    .form-fieldset {
+      margin: 0;
+
+      &--username {
+        margin-right: 35px;
+      }
+    }
+  }
+}

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ru" ng-app="ngApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Drimz</title>
+    <meta name="description" content="">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,500" rel="stylesheet">
+    <link href="./images/favicon.ico" rel="shortcut icon">
+    <link href="./libs/normalize.css" rel="stylesheet">
+    <link href="./styles/styles.css" rel="stylesheet">
+</head>
+<body>
+<div class="page-wrap" ng-controller="landingCtrl">
+    <div class="page-content">
+        <header class="page-header header">
+
+            <section class="container">
+                <h1 class="header-logo logo">
+                    <img class="logo__img" src="./images/logo.png" width="32" height="36" alt=""/>
+                    <span class="logo__text">Drimz</span>
+                </h1>
+                <section class="header-intro">
+                    <h2 class="header-intro__heading">Self-controlled community on AR steroids</h2>
+                    <p class="header-intro__description">
+                        Re-imagine the world around you by adding new features to ordinary objects. Enjoy the craetive
+                        AR
+                        expos of other people, collaborate to create AR art, and share the results with the rest of the
+                        world.
+                    </p>
+
+                    <button class="header-intro__btn-video js-open-video" type="button" ng-click="toggleVideo()">WATCH VIDEO</button>
+                </section>
+
+                <ul class="header-social social">
+                    <li class="social-item">
+                        <a href="facebook.com" aria-label="facebook">Facebook</a>
+                    </li>
+                    <li class="social-item">
+                        <a href="twitter.com" aria-label="twitter">Twitter</a>
+                    </li>
+                </ul>
+            </section>
+
+            <div class="header-parallax">
+                <div class="layer-area">
+                    <div class="layer-burger"></div>
+                    <div class="layer-phone on-draggable" draggable></div>
+                    <div class="layer-phone under-front"></div>
+                </div>
+                <div class="layer-front"></div>
+            </div>
+            <section class="header-form">
+                <h2 class="visually-hidden">Форма подписки</h2>
+                <form class="form container" method="get" name="subscribeForm" ng-submit="submitSubscribe(request)">
+                    <b class="form__heading">Подпишись, чтобы ничего не пропустить: </b>
+                    <div class="form-group">
+                        <label class="form-fieldset form-fieldset--username">
+                            <span class="form-fieldset__label">Имя</span>
+                            <input class="form-fieldset__input" type="text" name="username" ng-model="request.username"
+                                   ng-pattern="/^[a-zа-яё]+$/" ng-required="true" />
+                            <!--<p class="" ng-messages="loginForm.email.$error"  ng-if="subscribeForm.username.$dirty">Error</p>-->
+                        </label>
+                        <label class="form-fieldset form-fieldset--mail">
+                            <span class="form-fieldset__label">Электронная почта</span>
+                            <input class="form-fieldset__input" type="text" name="email" ng-model="request.email"
+                                   ng-pattern="/^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*[a-zA-Z]{2,6}$/"
+                                   ng-required="true" />
+                            <!--<p class="" ng-messages="loginForm.email.$error"  ng-if="subscribeForm.mail.$dirty">Error</p>-->
+                        </label>
+                        <button class="form__submit" type="submit">Отправить</button>
+                    </div>
+                </form>
+            </section>
+        </header>
+        <main class="page-main">
+            <h2 class="visually-hidden">Возможности</h2>
+            <ul class="features">
+                <li class="features-item">
+                    <div class="features-item__img">
+                        <img src="./images/features-one.png" alt=""/>
+                    </div>
+                    <div class="features-item__description">
+                        <h2 class="features-item__description-title">Взгляни на любимые места по-новому</h2>
+                        <p class="features-item__description-text">
+                            Re-imagine the world around you by adding new features to ordinary objects. Enjoy the
+                            craetive AR
+                            expos of other people, collaborate to create AR art, and share the results with the rest of
+                            the
+                            world.
+                        </p>
+                        <p class="features-item__description-text">
+                            Re-imagine the world around you by adding new features to ordinary objects. Enjoy the
+                            craetive AR
+                            expos of other people, collaborate to create AR art, and share the results with the rest of
+                            the
+                            world.
+                        </p>
+                    </div>
+                </li>
+                <li class="features-item">
+                    <div class="features-item__description">
+                        <h2 class="features-item__description-title">Улучшайте через взаимодействие</h2>
+                        <p class="features-item__description-text">
+                            Re-imagine the world around you by adding new features to ordinary objects. Enjoy the
+                            craetive AR
+                            expos of other people, collaborate to create AR art, and share the results with the rest of
+                            the
+                            world.
+                        </p>
+                        <p class="features-item__description-text">
+                            Re-imagine the world around you by adding new features to ordinary objects. Enjoy the
+                            craetive AR
+                            expos of other people, collaborate to create AR art, and share the results with the rest of
+                            the
+                            world.
+                        </p>
+                    </div>
+                    <div class="features-item__img">
+                        <img src="./images/features-two.png" alt=""/>
+                    </div>
+                </li>
+                <li class="features-item">
+                    <div class="features-item__img">
+                        <img src="./images/features-three.png" alt=""/>
+                    </div>
+                    <div class="features-item__description">
+                        <h2 class="features-item__description-title">Зарабатывайте на модерации</h2>
+                        <p class="features-item__description-text">
+                            Re-imagine the world around you by adding new features to ordinary objects. Enjoy the
+                            craetive AR
+                            expos of other people, collaborate to create AR art, and share the results with the rest of
+                            the
+                            world.
+                        </p>
+                        <p class="features-item__description-text">
+                            Re-imagine the world around you by adding new features to ordinary objects. Enjoy the
+                            craetive AR
+                            expos of other people, collaborate to create AR art, and share the results with the rest of
+                            the
+                            world.
+                        </p>
+                    </div>
+                </li>
+                <li class="features-item">
+                    <div class="features-item__description">
+                        <h2 class="features-item__description-title">Удивляйте близких и друзей</h2>
+                        <p class="features-item__description-text">
+                            Re-imagine the world around you by adding new features to ordinary objects. Enjoy the
+                            craetive AR
+                            expos of other people, collaborate to create AR art, and share the results with the rest of
+                            the
+                            world.
+                        </p>
+                        <p class="features-item__description-text">
+                            Re-imagine the world around you by adding new features to ordinary objects. Enjoy the
+                            craetive AR
+                            expos of other people, collaborate to create AR art, and share the results with the rest of
+                            the
+                            world.
+                        </p>
+                    </div>
+                    <div class="features-item__img">
+                        <img src="./images/features-four.png" alt=""/>
+                    </div>
+                </li>
+                <li class="features-item">
+                    <div class="features-item__img">
+                        <img src="./images/features-five.png" alt=""/>
+                    </div>
+                    <div class="features-item__description">
+                        <h2 class="features-item__description-title">Оторвитесь от <br> привычного</h2>
+                        <p class="features-item__description-text">
+                            Re-imagine the world around you by adding new features to ordinary objects. Enjoy the
+                            craetive AR
+                            expos of other people, collaborate to create AR art, and share the results with the rest of
+                            the
+                            world.
+                        </p>
+                        <p class="features-item__description-text">
+                            Re-imagine the world around you by adding new features to ordinary objects. Enjoy the
+                            craetive AR
+                            expos of other people, collaborate to create AR art, and share the results with the rest of
+                            the
+                            world.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </main>
+    </div>
+    <footer class="page-footer footer">
+        <div class="container">
+            <section class="footer-form">
+                <h2 class="visually-hidden">Форма подписки</h2>
+                <form class="form container" method="get" name="subscribeForm" ng-submit="submitSubscribe(request)">
+                    <b class="form__heading">Подпишись, чтобы ничего не пропустить: </b>
+                    <div class="form-group">
+                        <label class="form-fieldset form-fieldset--username">
+                            <span class="form-fieldset__label">Имя</span>
+                            <input class="form-fieldset__input" type="text" name="username" ng-model="request.username"
+                                   ng-pattern="/^[a-zа-яё]+$/" ng-required="true" />
+                            <!--<p class="" ng-messages="loginForm.email.$error"  ng-if="subscribeForm.username.$dirty">Error</p>-->
+                        </label>
+                        <label class="form-fieldset form-fieldset--mail">
+                            <span class="form-fieldset__label">Электронная почта</span>
+                            <input class="form-fieldset__input" type="text" name="email" ng-model="request.email"
+                                   ng-pattern="/^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*[a-zA-Z]{2,6}$/"
+                                   ng-required="true" />
+                            <!--<p class="" ng-messages="loginForm.email.$error"  ng-if="subscribeForm.mail.$dirty">Error</p>-->
+                        </label>
+                        <button class="form__submit" type="submit">Отправить</button>
+                    </div>
+                </form>
+            </section>
+
+            <ul class="footer-social social">
+                <li class="social-item">
+                    <a href="facebook.com" aria-label="facebook">Facebook</a>
+                </li>
+                <li class="social-item">
+                    <a href="twitter.com" aria-label="twitter">Twitter</a>
+                </li>
+            </ul>
+        </div>
+    </footer>
+
+    <modal-dialog show="isVideoShown" dialog-title="" on-close="toggleVideo">
+        <iframe width="100%" height="480" src="https://www.youtube.com/embed/kgaO45SyaO4?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+    </modal-dialog>
+    <modal-dialog show="alert.isShow" dialog-title="{{ alert.title }}" on-close="toggleAlert">
+        <p>{{ alert.message }}</p>
+    </modal-dialog>
+</div>
+<script src="./libs/angular.min.js"></script>
+<script src="./app.js"></script>
+</body>
+</html>
