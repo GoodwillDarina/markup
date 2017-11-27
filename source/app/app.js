@@ -56,7 +56,7 @@ app.directive('draggable', ['$document', function($document) {
             y1: areaDrag[0].getBoundingClientRect().height - element[0].getBoundingClientRect().height
         };
         var phoneBorder = element.next();
-
+        var burger = phoneBorder.children().children();
 
         function getMouseOffset(target, event) {
             var docPos = getPosition(target);
@@ -99,18 +99,23 @@ app.directive('draggable', ['$document', function($document) {
                 }
             }
 
+            console.warn(burger[0].getBoundingClientRect().x, newOffset.x, mouseOffset.pageX);
+            // burger.css({
+            //     top: burger[0].getBoundingClientRect().y - newOffset.y + 'px',
+            //     left: burger[0].getBoundingClientRect().x - newOffset.x + 'px'
+            // });
             element.css({
                 top: newOffset.y + 'px',
                 left:  newOffset.x + 'px',
                 bottom: 'auto',
                 right: 'auto'
             });
-            phoneBorder.css({
-                top: newOffset.y + 'px',
-                left:  newOffset.x + 'px',
-                bottom: 'auto',
-                right: 'auto'
-            });
+            // phoneBorder.css({
+            //     top: newOffset.y + 'px',
+            //     left:  newOffset.x + 'px',
+            //     bottom: 'auto',
+            //     right: 'auto'
+            // });
             return false;
         }
 

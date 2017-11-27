@@ -137,9 +137,11 @@
   bottom: 0;
   top: -32px;
   right: 135px;
+  overflow: hidden;
 
   width: 326px;
   height: 670px;
+  padding: 80px 18px;
   margin: auto;
 
 
@@ -151,14 +153,27 @@
   }
 }
 .layer-burger {
-  position: absolute;
-  bottom: 125px;
-  top: 0;
-  left: 527px;
-
-  size: 357px;
+  position: relative;
+  size: 290px 510px;
   margin: auto;
-  background: transparent url('../images/header/burger.png') no-repeat 0%;
+  overflow: hidden;
+
+  img {
+    position: absolute;
+  //bottom: 125px;
+    top: 54px;
+    left: -48px;
+  }
+  //&.position-right {
+  //  right: 135px
+  //  left: auto;
+  //  background-position-x: right;
+  //}
+  //&.position-left {
+  //  right: auto;
+  //  left: 564px;
+  //  background-position-x: left;
+  //}
 }
 
 
