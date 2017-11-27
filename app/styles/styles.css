@@ -211,11 +211,7 @@ main {
   background-color: #1e2b6c;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url("../images/footer.png"), -webkit-linear-gradient(315deg, #1e2b6c 50%, #0c8bcd);
-  background-image: url("../images/footer.png"), -moz-linear-gradient(315deg, #1e2b6c 50%, #0c8bcd);
-  background-image: url("../images/footer.png"), -o-linear-gradient(315deg, #1e2b6c 50%, #0c8bcd);
-  background-image: url("../images/footer.png"), -ms-linear-gradient(315deg, #1e2b6c 50%, #0c8bcd);
-  background-image: url("../images/footer.png"), linear-gradient(135deg, #1e2b6c 50%, #0c8bcd);
+  background-image: url("../images/footer.png");
   -webkit-box-shadow: 0 -1px 7px 0 rgba(0,0,0,0.5);
   box-shadow: 0 -1px 7px 0 rgba(0,0,0,0.5);
 }
