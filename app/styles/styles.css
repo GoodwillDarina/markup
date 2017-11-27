@@ -265,7 +265,7 @@ main {
 .header {
   position: relative;
   width: 100%;
-  background: #1e52c1 url("../images/header/burger_agressive.png") no-repeat center top;
+  background: #1e2b6c url("../images/header/burger_agressive.png") no-repeat center top;
   -webkit-background-size: 1440px 894px;
   -moz-background-size: 1440px 894px;
   background-size: 1440px 894px;
@@ -412,7 +412,6 @@ main {
   position: relative;
   max-width: 1024px;
   width: 100%;
-  background: #008000;
 }
 .layer-phone {
   position: absolute;
@@ -433,11 +432,11 @@ main {
   position: absolute;
   bottom: 125px;
   top: 0;
-  right: 140px;
+  left: 527px;
   width: 357px;
   height: 357px;
   margin: auto;
-  background: transparent url("../images/header/burger.png") no-repeat center;
+  background: transparent url("../images/header/burger.png") no-repeat 0%;
 }
 .features {
   padding: 0;
