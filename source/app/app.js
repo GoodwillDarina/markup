@@ -48,6 +48,7 @@ app.directive('draggable', ['$document', function($document) {
             y: null
         };
         var xPos, yPos;
+
         var areaDrag = element.parent();
         var areaPosition = {
             x: areaDrag[0].getBoundingClientRect().x,
@@ -56,7 +57,12 @@ app.directive('draggable', ['$document', function($document) {
             y1: areaDrag[0].getBoundingClientRect().height - element[0].getBoundingClientRect().height
         };
         var phoneBorder = element.next();
+
         var burger = phoneBorder.children().children();
+        var burgerPosition = {
+            x: burger[0].getBoundingClientRect().x,
+            y: burger[0].getBoundingClientRect().y
+        };
 
         function getMouseOffset(target, event) {
             var docPos = getPosition(target);
@@ -66,7 +72,6 @@ app.directive('draggable', ['$document', function($document) {
         element.on('mousedown', function(event) {
             event.preventDefault();
 
-            // получить сдвиг элемента относительно курсора мыши
             mouseOffset = getMouseOffset(element, event);
 
             $document.on('mousemove', mousemove);
@@ -99,23 +104,22 @@ app.directive('draggable', ['$document', function($document) {
                 }
             }
 
-            console.warn(burger[0].getBoundingClientRect().x, newOffset.x, mouseOffset.pageX);
-            // burger.css({
-            //     top: burger[0].getBoundingClientRect().y - newOffset.y + 'px',
-            //     left: burger[0].getBoundingClientRect().x - newOffset.x + 'px'
-            // });
             element.css({
                 top: newOffset.y + 'px',
                 left:  newOffset.x + 'px',
                 bottom: 'auto',
                 right: 'auto'
             });
-            // phoneBorder.css({
-            //     top: newOffset.y + 'px',
-            //     left:  newOffset.x + 'px',
-            //     bottom: 'auto',
-            //     right: 'auto'
-            // });
+            phoneBorder.css({
+                top: newOffset.y + 'px',
+                left:  newOffset.x + 'px',
+                bottom: 'auto',
+                right: 'auto'
+            });
+            burger.css({
+                top: burgerPosition.y - phoneBorder[0].getBoundingClientRect().y - 80 + 'px',
+                left: burgerPosition.x - phoneBorder[0].getBoundingClientRect().x - 18 + 'px'
+            });
             return false;
         }
 
