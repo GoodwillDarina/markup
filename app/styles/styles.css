@@ -250,7 +250,9 @@ main {
 }
 .footer-form .form__heading {
   width: 100%;
-  margin: 0 0 32px;
+}
+.footer-form .form-group {
+  margin: 0;
 }
 .footer-form .form-fieldset {
   margin: 0;
@@ -261,7 +263,10 @@ main {
 .header {
   position: relative;
   width: 100%;
-  background: #1e2b6c url("../images/header/burger_agressive.png") no-repeat center top;
+  background-color: #1e2b6c;
+  background-image: url("../images/header/burger_agressive.png");
+  background-repeat: no-repeat;
+  background-position: center top;
   -webkit-background-size: 1440px 894px;
   -moz-background-size: 1440px 894px;
   background-size: 1440px 894px;
@@ -300,7 +305,7 @@ main {
 }
 .header-intro::before {
   position: absolute;
-  top: -86px;
+  bottom: 54px;
   left: -82px;
   content: '';
   display: block;
@@ -534,7 +539,7 @@ main {
   flex-wrap: wrap;
   width: 100%;
   height: auto;
-  padding: 25px 10px 32px;
+  padding: 25px 10px 0;
 }
 .form__heading {
   -webkit-box-flex: 1;
@@ -544,7 +549,7 @@ main {
   -webkit-flex: 1 0 auto;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
-  margin: 0 5px;
+  margin: 0 0 32px;
   font-family: 'ProximaNova', 'Rubik', 'Arial', sans-serif;
   font-size: 20px;
   font-weight: bold;
@@ -572,7 +577,7 @@ main {
   -ms-flex-pack: start;
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
-  margin-right: 5px;
+  margin: 0 0 32px;
 }
 .form-fieldset {
   padding: 0;

@@ -80,8 +80,8 @@ app.directive('draggable', ['$document', function($document) {
         });
 
         function mousemove(event) {
-            xPos = event.pageX - mouseOffset.x - areaPosition.x;
-            yPos = event.pageY - mouseOffset.y - areaPosition.y;
+            xPos = event.pageX - areaPosition.x;
+            yPos = event.pageY - areaPosition.y;
 
             if(yPos >= 0 && yPos <= areaPosition.y1) {
                 newOffset.y = yPos;
@@ -103,7 +103,8 @@ app.directive('draggable', ['$document', function($document) {
                     newOffset.x = 0;
                 }
             }
-
+            console.log(mouseOffset);
+            console.log(event.pageX, event.pageY);
             element.css({
                 top: newOffset.y + 'px',
                 left:  newOffset.x + 'px',
@@ -133,6 +134,3 @@ app.directive('draggable', ['$document', function($document) {
         }
     };
 }]);
-
-
-
