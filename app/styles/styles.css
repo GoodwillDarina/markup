@@ -290,18 +290,22 @@ main {
   -ms-flex-align: end;
   -webkit-align-items: flex-end;
   align-items: flex-end;
+  -webkit-box-lines: multiple;
+  -moz-box-lines: multiple;
+  -o-box-lines: multiple;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
   height: 894px;
-  padding-top: 90px;
+  padding-top: 32px;
   padding-bottom: 146px;
-}
-.header > .container > * {
-  z-index: 5;
 }
 .header-intro {
   position: relative;
   width: 320px;
   padding: 0;
   color: #fff;
+  z-index: 5;
 }
 .header-intro::before {
   position: absolute;
@@ -367,12 +371,18 @@ main {
   box-shadow: 0 -1px 7px 0 rgba(0,0,0,0.5);
 }
 .header-logo {
-  position: absolute;
-  top: 32px;
-  left: 15px;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+  -ms-flex-item-align: start;
+  width: 100%;
+}
+.header-logo h1 {
+  position: relative;
+  z-index: 5;
 }
 .header-social.social {
   position: relative;
+  z-index: 5;
   margin: 12px -8px;
 }
 .header-parallax {
@@ -397,6 +407,11 @@ main {
   height: 894px;
   margin: auto;
 }
+@media all and (-ms-high-contrast: none) {
+  .header-parallax {
+    display: block;
+  }
+}
 .layer-front {
   position: absolute;
   top: 0;
@@ -412,6 +427,12 @@ main {
   position: relative;
   max-width: 1024px;
   width: 100%;
+  height: 894px;
+}
+@media all and (-ms-high-contrast: none) {
+  .layer-area {
+    float: right;
+  }
 }
 .layer-phone {
   position: absolute;
