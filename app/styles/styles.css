@@ -537,7 +537,7 @@ main {
   flex-wrap: wrap;
   width: 100%;
   height: auto;
-  padding: 25px 10px 0;
+  padding: 25px 10px 22px;
 }
 .form__heading {
   -webkit-box-flex: 1;
@@ -547,7 +547,7 @@ main {
   -webkit-flex: 1 0 auto;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;
-  margin: 0 0 32px;
+  margin: 0 0 10px;
   font-family: 'ProximaNova', 'Rubik', 'Arial', sans-serif;
   font-size: 20px;
   font-weight: bold;
@@ -575,9 +575,10 @@ main {
   -ms-flex-pack: start;
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
-  margin: 0 0 32px;
+  margin: 0 0 10px;
 }
 .form-fieldset {
+  position: relative;
   padding: 0;
   margin-right: 20px;
   border: none;
@@ -589,23 +590,43 @@ main {
   width: 286px;
 }
 .form-fieldset__label {
+  position: absolute;
+  top: 19px;
+  left: 0;
   display: block;
   font-size: 14px;
   font-weight: normal;
   line-height: 1.8;
   color: #00adff;
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  -o-transition: all 0.25s;
+  -ms-transition: all 0.25s;
+  transition: all 0.25s;
 }
 .form-fieldset__input {
   width: 100%;
+  height: 50px;
+  padding: 20px 0 5px;
   border: none;
   border-bottom: 1px solid #00adff;
-  font-size: 14px;
+  font-family: 'Rubik', 'Arial', sans-serif;
+  font-size: 16px;
   line-height: 1;
   color: #00adff;
   background: transparent;
+  outline: none;
+}
+.form-fieldset__input:focus + .form-fieldset__label,
+.form-fieldset__input.ng-not-empty + .form-fieldset__label {
+  top: 0;
+  font-size: 12px;
 }
 .form-fieldset__input.ng-dirty.ng-invalid:not(:focus) {
   border-color: #d72218;
+  color: #d72218;
+}
+.form-fieldset__input.ng-dirty.ng-invalid:not(:focus) + .form-fieldset__label {
   color: #d72218;
 }
 .form__submit {
