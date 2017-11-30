@@ -5,6 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Drimz</title>
+    <meta name="theme-color" content="#1e2b6c">
     <meta name="description" content="">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500" rel="stylesheet">
     <link href="./images/favicon.ico" rel="shortcut icon">
@@ -62,15 +63,13 @@
                         <label class="form-fieldset form-fieldset--username">
                             <span class="form-fieldset__label">Имя</span>
                             <input class="form-fieldset__input" type="text" name="username" ng-model="request.username"
-                                   ng-pattern="/^[a-zа-яё]+$/" ng-required="true" />
-                            <!--<p class="" ng-messages="loginForm.email.$error"  ng-if="subscribeForm.username.$dirty">Error</p>-->
+                                   ng-pattern="/^[a-zа-яё]+$/" ng-required="true" autocomplete="off"/>
                         </label>
                         <label class="form-fieldset form-fieldset--mail">
                             <span class="form-fieldset__label">Электронная почта</span>
                             <input class="form-fieldset__input" type="text" name="email" ng-model="request.email"
                                    ng-pattern="/^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*[a-zA-Z]{2,6}$/"
-                                   ng-required="true" />
-                            <!--<p class="" ng-messages="loginForm.email.$error"  ng-if="subscribeForm.mail.$dirty">Error</p>-->
+                                   ng-required="true" autocomplete="off"/>
                         </label>
                         <button class="form__submit" type="submit">Отправить</button>
                     </div>
@@ -203,15 +202,13 @@
                         <label class="form-fieldset form-fieldset--username">
                             <span class="form-fieldset__label">Имя</span>
                             <input class="form-fieldset__input" type="text" name="username" ng-model="request.username"
-                                   ng-pattern="/^[a-zа-яё]+$/" ng-required="true" />
-                            <!--<p class="" ng-messages="loginForm.email.$error"  ng-if="subscribeForm.username.$dirty">Error</p>-->
+                                   ng-pattern="/^[a-zа-яё]+$/" ng-required="true" autocomplete="off"/>
                         </label>
                         <label class="form-fieldset form-fieldset--mail">
                             <span class="form-fieldset__label">Электронная почта</span>
                             <input class="form-fieldset__input" type="text" name="email" ng-model="request.email"
                                    ng-pattern="/^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*[a-zA-Z]{2,6}$/"
-                                   ng-required="true" />
-                            <!--<p class="" ng-messages="loginForm.email.$error"  ng-if="subscribeForm.mail.$dirty">Error</p>-->
+                                   ng-required="true" autocomplete="off"/>
                         </label>
                         <button class="form__submit" type="submit">Отправить</button>
                     </div>

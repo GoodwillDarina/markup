@@ -69,7 +69,9 @@ app.directive('draggable', ['$document', function($document) {
             return {x: event.pageX - docPos.x, y: event.pageY - docPos.y};
         }
 
-        element.on('mousedown', function(event) {
+        element.on('mousedown', mousedown);
+
+        function mousedown(event) {
             event.preventDefault();
 
             mouseOffset = getMouseOffset(element, event);
@@ -77,11 +79,11 @@ app.directive('draggable', ['$document', function($document) {
             $document.on('mousemove', mousemove);
             $document.on('mouseup', mouseup);
             return false;
-        });
+        }
 
         function mousemove(event) {
-            xPos = event.pageX - areaPosition.x;
-            yPos = event.pageY - areaPosition.y;
+            xPos = event.pageX - mouseOffset.x - areaPosition.x;
+            yPos = event.pageY - mouseOffset.y - areaPosition.y;
 
             if(yPos >= 0 && yPos <= areaPosition.y1) {
                 newOffset.y = yPos;
