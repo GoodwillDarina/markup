@@ -40,7 +40,7 @@ app.controller('landingCtrl', [
         };
     }]);
 
-app.directive('draggable', ['$document', function($document) {
+app.directive('draggable', ['$document', '$window', function($document, $window) {
     return function(scope, element, attr) {
         var mouseOffset;
         var newOffset = {
@@ -65,8 +65,12 @@ app.directive('draggable', ['$document', function($document) {
         };
 
         function getMouseOffset(target, event) {
-            var docPos = getPosition(target);
-            return {x: event.pageX - docPos.x, y: event.pageY - docPos.y};
+            var elementOffset = getPosition(target);
+
+            return {
+                x: event.pageX - elementOffset.x,
+                y: event.pageY - elementOffset.y
+            };
         }
 
         element.on('mousedown', mousedown);
@@ -105,8 +109,7 @@ app.directive('draggable', ['$document', function($document) {
                     newOffset.x = 0;
                 }
             }
-            console.log(mouseOffset);
-            console.log(event.pageX, event.pageY);
+
             element.css({
                 top: newOffset.y + 'px',
                 left:  newOffset.x + 'px',
@@ -120,19 +123,37 @@ app.directive('draggable', ['$document', function($document) {
                 right: 'auto'
             });
             burger.css({
-                top: burgerPosition.y - phoneBorder[0].getBoundingClientRect().y - 80 + 'px',
-                left: burgerPosition.x - phoneBorder[0].getBoundingClientRect().x - 18 + 'px'
+                top: burgerPosition.y - getElementOffset().y - 80 + 'px',
+                left: burgerPosition.x - getElementOffset().x - 18 + 'px'
             });
+
+            console.warn("mousemove (phoneBorder)", element[0].getBoundingClientRect().x, getElementOffset().x);
             return false;
         }
 
+        function getElementOffset() {
+            var de = $document[0].documentElement;
+            var box = element[0].getBoundingClientRect();
+
+
+            return {
+                y: box.top + $window.pageYOffset - de.clientTop,
+                x: box.left + $window.pageXOffset - de.clientLeft
+            };
+        }
         function mouseup() {
             $document.off('mousemove', mousemove);
             $document.off('mouseup', mouseup);
         }
 
         function getPosition(elem) {
-            return {x: elem[0].getBoundingClientRect().left, y: elem[0].getBoundingClientRect().top};
+            var de = $document[0].documentElement;
+            var box = elem[0].getBoundingClientRect();
+
+            return {
+                y: box.top + $window.pageYOffset - de.clientTop,
+                x: box.left + $window.pageXOffset - de.clientLeft
+            };
         }
     };
 }]);
