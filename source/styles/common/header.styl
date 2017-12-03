@@ -165,21 +165,29 @@
 
   &.under-front.is-animate {
     animation-name: dragme;
-    animation-duration: 1s;
+    animation-duration: 7s;
     animation-timing-function: ease-out;
-    animation-delay: 2s;
-    animation-iteration-count: 2;
+    animation-delay: 5s;
+    animation-iteration-count: 1;
 
-    .layer-burger  img {
+    .layer-burger img {
       animation-name: dragme-burger;
-      animation-duration: 1s;
+      animation-duration: 7s;
       animation-timing-function: ease-out;
-      animation-delay: 2s;
-      animation-iteration-count: 2;
+      animation-delay: 5s;
+      animation-iteration-count: 1;
     }
   }
   &.on-draggable {
     z-index: 5;
+
+    &.is-animate {
+      animation-name: dragme-elem;
+      animation-duration: 7s;
+      animation-timing-function: ease-out;
+      animation-delay: 5s;
+      animation-iteration-count: 1;
+    }
   }
 }
 
@@ -206,32 +214,55 @@
 
 @keyframes dragme {
   0% {
-    transform: translateX(0px);
     box-shadow: none;
   }
-  25% {
-    transform: translateX(30px);
+  20% {
+    box-shadow: 0 0 100px 0 #00b5ff;
   }
-  50% {
-    box-shadow: 0 0 50px 0 rgb(24, 136, 202);
+  40% {
+    box-shadow: none;
+    transform: translateX(0px);
   }
-  75% {
-    transform: translateX(-30px);
+  60% {
+    transform: translateX(135px);
+  }
+  80% {
+    transform: translateX(-135px);
   }
   100% {
     transform: translateX(0px);
-    box-shadow: none;
   }
 }
+
 @keyframes dragme-burger {
   0% {
     transform: translateX(0px);
   }
-  25% {
-    transform: translateX(-30px);
+  40% {
+    transform: translateX(0px);
   }
-  75% {
-    transform: translateX(30px);
+  60% {
+    transform: translateX(-135px);
+  }
+  80% {
+    transform: translateX(135px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+@keyframes dragme-elem {
+  0% {
+    transform: translateX(0px);
+  }
+  40% {
+    transform: translateX(0px);
+  }
+  60% {
+    transform: translateX(135px);
+  }
+  80% {
+    transform: translateX(-135px);
   }
   100% {
     transform: translateX(0px);
