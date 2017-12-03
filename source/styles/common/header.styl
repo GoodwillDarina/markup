@@ -169,6 +169,14 @@
     animation-timing-function: ease-out;
     animation-delay: 2s;
     animation-iteration-count: 2;
+
+    .layer-burger  img {
+      animation-name: dragme-burger;
+      animation-duration: 1s;
+      animation-timing-function: ease-out;
+      animation-delay: 2s;
+      animation-iteration-count: 2;
+    }
   }
   &.on-draggable {
     z-index: 5;
@@ -193,14 +201,6 @@
     position: absolute;
     top: 120px;
     left: -52px;
-
-    &.is-animate {
-      animation-name: dragme-burger;
-      animation-duration: 1s;
-      animation-timing-function: ease-out;
-      animation-delay: 2s;
-      animation-iteration-count: 2;
-    }
   }
 }
 

@@ -18,7 +18,6 @@
 <div class="page-wrap" ng-controller="landingCtrl">
     <div class="page-content">
         <header class="page-header header">
-
             <section class="container">
                 <div class="header-logo">
                     <h1 class="logo">
@@ -46,14 +45,12 @@
                     </li>
                 </ul>
             </section>
-
             <div class="header-parallax">
                 <div class="layer-area">
-                    <!--<div class="layer-phone on-draggable" style="background: #000;" hm-pan ="onTap()"></div>-->
-                    <div class="layer-phone on-draggable" draggable></div>
-                    <div class="layer-phone under-front is-animate">
+                    <div class="layer-phone on-draggable" draggable ng-mousedown="onDraggable()"></div>
+                    <div class="layer-phone under-front" ng-class="{'is-animate' : isAnimate}">
                         <div class="layer-burger">
-                            <img class="is-animate" src="./images/header/burger.png" width="349" height="311" alt="" />
+                            <img src="./images/header/burger.png" width="349" height="311" alt="" />
                         </div>
                         <img class="layer-border" src="./images/header/iphone.svg" width="326" height="670" alt="">
                     </div>

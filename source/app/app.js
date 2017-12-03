@@ -5,8 +5,11 @@ require('ngmodal');
 
 var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal']);
 app.controller('landingCtrl', [
-    '$scope', '$timeout', function ($scope, $timeout) {
+    '$scope', '$timeout', '$document', function ($scope, $timeout, $document) {
         var isSubmitInProgress = false;
+        $timeout(function() {
+            $scope.isAnimate = $document[0].documentElement.clientWidth >= 1024;
+        });
         $scope.isVideoShown = false;
         $scope.alert = {
             message: 'It is ok!',
@@ -39,17 +42,18 @@ app.controller('landingCtrl', [
             });
         };
 
-        $scope.onTap = function() {
-            console.log(this);
+        $scope.onDraggable = function() {
+            $scope.isAnimate = false;
         }
     }]);
 
 app.directive('draggable', ['$document', '$window', function($document, $window) {
     return function(scope, element, attr) {
         var ua = window.navigator.userAgent.toLowerCase();
-        var is_ie = (/trident/gi).test(ua) || (/msie/gi).test(ua);
+        var isIe = (/trident/gi).test(ua) || (/msie/gi).test(ua);
+        var clientWidth = $document[0].documentElement.clientWidth;
 
-        if(!is_ie) {
+        if(!isIe && clientWidth >= 1024) {
             var mouseOffset;
             var newOffset = {
                 x: null,
