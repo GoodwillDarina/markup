@@ -2,13 +2,13 @@ const gulp = require('gulp');
 const browserify = require('browserify');
 const source = require('vinyl-source-stream');
 const buffer = require('vinyl-buffer');
-const addStream = require('add-stream');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
+const htmlmin = require('gulp-htmlmin');
+const imagemin = require('gulp-imagemin');
+const cssmin = require('gulp-csso');
 const stylus = require('gulp-stylus');
 const nib = require('nib');
-const rigger = require('gulp-rigger');
-const cssmin = require('gulp-minify-css');
 const del = require('del');
 const plumber = require('gulp-plumber');
 const browserSync = require("browser-sync");
@@ -52,7 +52,7 @@ function clean() {
 
 function copyIndex() {
     return gulp.src('./source/index.html')
-        .pipe(rigger())
+        .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(gulp.dest('./app'))
         .pipe(reload({stream: true}));
 }
@@ -64,7 +64,7 @@ function compileJs() {
         .pipe(buffer())
         .pipe(concat('app.js'))
         .pipe(uglify())
-        .pipe(gulp.dest('./app'));
+        .pipe(gulp.dest('./app/scripts'));
 }
 
 function compileStylus() {
@@ -76,12 +76,16 @@ function compileStylus() {
             'include css': true
         }))
         .pipe(plumber())
+        .pipe(cssmin())
         .pipe(gulp.dest('./app/styles'))
 }
 
 function copyImages() {
     return gulp.src('./source/images/**/*.*')
         .pipe(plumber())
+        .pipe(imagemin({
+            progressive: true
+        }))
         .pipe(gulp.dest('./app/images'));
 }
 
@@ -94,11 +98,10 @@ function copyFonts() {
 function copyLibraries() {
     return gulp.src([
         './node_modules/angular/angular.min.js',
-        './node_modules/normalize.css/normalize.css',
         './source/libs/**/*.*'
     ])
-        .pipe(plumber())
-        .pipe(gulp.dest('./app/libs/'));
+    .pipe(plumber())
+    .pipe(gulp.dest('./app/libs/'));
 }
 
 function cleanCss() {
