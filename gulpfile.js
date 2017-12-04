@@ -18,12 +18,13 @@ gulp.task('clean:css', cleanCss);
 gulp.task('clean:js', cleanJs);
 gulp.task('clean', clean);
 
-gulp.task('compile:js', compileJs);
-gulp.task('compile:stylus', compileStylus);
 gulp.task('copy:images', copyImages);
 gulp.task('copy:fonts', copyFonts);
 gulp.task('copy:libraries', copyLibraries);
+gulp.task('copy:css', copyCss);
 
+gulp.task('compile:js', compileJs);
+gulp.task('compile:stylus', compileStylus);
 gulp.task('server', startServer);
 
 gulp.task('build', ['clean', 'copy:fonts', 'copy:images', 'copy:libraries', 'compile:js', 'compile:stylus'], copyIndex);
@@ -95,6 +96,14 @@ function copyFonts() {
         .pipe(gulp.dest('./app/fonts'));
 }
 
+function copyCss() {
+    return gulp.src([
+        './node_modules/ngmodal/dist/ng-modal.css',
+        './node_modules/normalize.css/normalize.css'
+    ])
+    .pipe(plumber())
+    .pipe(gulp.dest('./source/styles/libs/'));
+}
 function copyLibraries() {
     return gulp.src([
         './node_modules/angular/angular.min.js',

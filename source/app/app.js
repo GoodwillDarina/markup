@@ -3,13 +3,14 @@ require('angular-scroll');
 require('angular-touch');
 require('ngmodal');
 
-var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal']);
+var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal',]);
 app.controller('landingCtrl', [
     '$scope', '$timeout', '$document', function ($scope, $timeout, $document) {
         var isSubmitInProgress = false;
         $timeout(function() {
             $scope.isAnimate = $document[0].documentElement.clientWidth >= 1024;
         });
+
         $scope.isVideoShown = false;
         $scope.alert = {
             message: 'It is ok!',
@@ -64,7 +65,7 @@ app.directive('draggable', ['$document', '$window', function($document, $window)
             var areaDrag = element.parent();
             var areaPosition = {
                 x: areaDrag[0].getBoundingClientRect().x,
-                y: areaDrag[0].getBoundingClientRect().y,
+                y: 0,
                 x1: areaDrag[0].getBoundingClientRect().width - element[0].getBoundingClientRect().width,
                 y1: areaDrag[0].getBoundingClientRect().height - element[0].getBoundingClientRect().height
             };
@@ -73,14 +74,12 @@ app.directive('draggable', ['$document', '$window', function($document, $window)
             var burger = phoneBorder.children().children();
             var burgerPosition = {
                 x: burger[0].getBoundingClientRect().x,
-                y: burger[0].getBoundingClientRect().y
+                y: 230
             };
-
             element.on('mousedown', mousedown);
 
             function getMouseOffset(event) {
                 var elementOffset = getElementOffset();
-
                 return {
                     x: event.pageX - elementOffset.x,
                     y: event.pageY - elementOffset.y
@@ -89,9 +88,6 @@ app.directive('draggable', ['$document', '$window', function($document, $window)
 
             function mousedown(event) {
                 event.preventDefault();
-
-                // phoneBorder.classList.remove('is-animate');
-                // burger.classList.remove('is-animate');
 
                 mouseOffset = getMouseOffset(event);
 
