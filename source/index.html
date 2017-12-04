@@ -15,7 +15,7 @@
     <link href="./styles/styles.css" rel="stylesheet">
 </head>
 <body ng-controller="landingCtrl">
-<div class="page-wrap" ng-scrollbar>
+<div class="page-wrap">
     <div class="page-content">
         <header class="page-header header">
             <section class="container">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="layer-front"></div>
             </div>
-            <section class="header-form">
+            <section class="header-form" fixed-scroll>
                 <h2 class="visually-hidden">Форма подписки</h2>
                 <form class="form container" method="get" name="subscribeForm" ng-submit="submitSubscribe(request)">
                     <b class="form__heading">Подпишись, чтобы ничего не пропустить: </b>

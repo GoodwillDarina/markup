@@ -164,15 +164,15 @@
   border-radius: 35px;
 
   &.under-front.is-animate {
-    animation-name: dragme;
-    animation-duration: 7s;
+    animation-name: dragme-glow, dragme;
+    animation-duration: 3s, 4s;
     animation-timing-function: ease-out;
-    animation-delay: 10s;
+    animation-delay: 7s, 10s;
     animation-iteration-count: 1;
 
     .layer-burger img {
       animation-name: dragme-burger;
-      animation-duration: 7s;
+      animation-duration: 4s;
       animation-timing-function: ease-out;
       animation-delay: 10s;
       animation-iteration-count: 1;
@@ -182,8 +182,8 @@
     z-index: 5;
 
     &.is-animate {
-      animation-name: dragme-elem;
-      animation-duration: 7s;
+      animation-name: dragme;
+      animation-duration: 4s;
       animation-timing-function: ease-out;
       animation-delay: 10s;
       animation-iteration-count: 1;
@@ -214,23 +214,27 @@
 
 @keyframes dragme {
   0% {
-    box-shadow: none;
-  }
-  20% {
-    box-shadow: 0 0 100px 0 #00b5ff;
-  }
-  40% {
-    box-shadow: none;
     transform: translateX(0px);
   }
-  60% {
+  25% {
     transform: translateX(135px);
   }
-  80% {
+  75% {
     transform: translateX(-135px);
   }
   100% {
     transform: translateX(0px);
+  }
+}
+@keyframes dragme-glow {
+  0% {
+    box-shadow: none;
+  }
+  50% {
+    box-shadow: 0 0 100px 10px #00b5ff;
+  }
+  100% {
+    box-shadow: none;
   }
 }
 
@@ -238,31 +242,11 @@
   0% {
     transform: translateX(0px);
   }
-  40% {
-    transform: translateX(0px);
-  }
-  60% {
+  25% {
     transform: translateX(-135px);
   }
-  80% {
+  75% {
     transform: translateX(135px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
-}
-@keyframes dragme-elem {
-  0% {
-    transform: translateX(0px);
-  }
-  40% {
-    transform: translateX(0px);
-  }
-  60% {
-    transform: translateX(135px);
-  }
-  80% {
-    transform: translateX(-135px);
   }
   100% {
     transform: translateX(0px);

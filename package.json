@@ -34,7 +34,6 @@
     "angular-scroll": "1.0.2",
     "angular-touch": "1.5.5",
     "ngmodal": "^2.0.1",
-    "ng-scrollbars": "0.0.11",
     "normalize.css": "*"
   }
 }

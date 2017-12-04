@@ -1,9 +1,10 @@
 require('angular-animate');
 require('angular-scroll');
 require('angular-touch');
+
 require('ngmodal');
 
-var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal',]);
+var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal']);
 app.controller('landingCtrl', [
     '$scope', '$timeout', '$document', function ($scope, $timeout, $document) {
         var isSubmitInProgress = false;
@@ -168,6 +169,10 @@ app.directive('draggable', ['$document', '$window', function($document, $window)
             function touchstart(event) {
                 event.preventDefault();
 
+                element.removeClass('is-animate');
+                phoneBorder.removeClass('is-animate');
+                burger.removeClass('is-animate');
+
                 if (event.targetTouches.length == 1) {
                     var touch = event.targetTouches[0];
                     mouseOffset = getMouseOffset(touch);
@@ -208,6 +213,14 @@ app.directive('draggable', ['$document', '$window', function($document, $window)
                 element[0].removeEventListener('touchmove', touchmove);
                 element[0].removeEventListener('touchend', touchend);
             }
+        }
+    };
+}]);
+app.directive('fixedScroll', ['$document', '$window', function($document, $window) {
+    return function(scope, element, attr) {
+        var clientWidth = $document[0].documentElement.clientWidth;
+
+        if(clientWidth >= 1024) {
         }
     };
 }]);
