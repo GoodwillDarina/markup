@@ -14,7 +14,7 @@
 
     <link href="./styles/styles.css" rel="stylesheet">
 </head>
-<body ng-controller="landingCtrl">
+<body ng-controller="landingCtrl" ng-init="loadPage()">
 <div class="page-wrap">
     <div class="page-content">
         <header class="page-header header">
@@ -48,7 +48,11 @@
             <div class="header-parallax">
                 <div class="layer-area">
                     <div class="layer-phone on-draggable" ng-class="{'is-animate' : isAnimate}" draggable ng-mousedown="onDraggable()"></div>
-                    <div class="layer-phone under-front" ng-class="{'is-animate' : isAnimate}">
+                    <div class="layer-phone under-front"
+                         ng-class="{'is-animate' : isAnimate}"
+                         images-loaded-events="imgLoadedEvents"
+                         images-loaded-options="{ background: true }"
+                    >
                         <div class="layer-burger">
                             <img src="./images/header/burger.png" width="349" height="311" alt="" />
                         </div>
@@ -232,7 +236,7 @@
         <iframe width="100%" height="480" src="https://www.youtube.com/embed/kgaO45SyaO4?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
     </modal-dialog>
     <modal-dialog show="alert.isShow" dialog-title="{{ alert.title }}" on-close="toggleAlert">
-        <p>{{ alert.message }}</p>
+        <p>{{ alert.message }}</p>ng
     </modal-dialog>
 </div>
 <script src="./libs/angular.min.js"></script>

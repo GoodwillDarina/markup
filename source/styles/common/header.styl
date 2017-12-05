@@ -165,17 +165,17 @@
 
   &.under-front.is-animate {
     animation-name: dragme-glow, dragme;
-    animation-duration: 3s, 4s;
+    animation-duration: 10s, 10s;
     animation-timing-function: ease-out;
     animation-delay: 7s, 10s;
-    animation-iteration-count: 1;
+    animation-iteration-count: infinite;
 
     .layer-burger img {
       animation-name: dragme-burger;
-      animation-duration: 4s;
+      animation-duration: 10s;
       animation-timing-function: ease-out;
       animation-delay: 10s;
-      animation-iteration-count: 1;
+      animation-iteration-count: infinite;
     }
   }
   &.on-draggable {
@@ -183,10 +183,10 @@
 
     &.is-animate {
       animation-name: dragme;
-      animation-duration: 4s;
+      animation-duration: 10s;
       animation-timing-function: ease-out;
       animation-delay: 10s;
-      animation-iteration-count: 1;
+      animation-iteration-count: infinite;
     }
   }
 }
@@ -216,13 +216,13 @@
   0% {
     transform: translateX(0px);
   }
-  25% {
+  10% {
     transform: translateX(135px);
   }
-  75% {
+  20% {
     transform: translateX(-135px);
   }
-  100% {
+  30% {
     transform: translateX(0px);
   }
 }
@@ -230,10 +230,10 @@
   0% {
     box-shadow: none;
   }
-  50% {
+  15% {
     box-shadow: 0 0 100px 10px #00b5ff;
   }
-  100% {
+  30% {
     box-shadow: none;
   }
 }
@@ -242,13 +242,13 @@
   0% {
     transform: translateX(0px);
   }
-  25% {
+  10% {
     transform: translateX(-135px);
   }
-  75% {
+  20% {
     transform: translateX(135px);
   }
-  100% {
+  30% {
     transform: translateX(0px);
   }
 }
