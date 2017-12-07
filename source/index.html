@@ -21,7 +21,7 @@
             <section class="container">
                 <div class="header-logo">
                     <h1 class="logo">
-                        <img class="logo__img" src="./images/logo.png" width="167" height="36" alt=""/>
+                        <img class="logo__img" src="./images/logo.png" srcset="./images/logo@2x.png 2x" width="167" height="36" alt=""/>
                     </h1>
                 </div>
                 <section class="header-intro">
@@ -61,7 +61,7 @@
             </div>
             <section class="header-form" fixed-scroll>
                 <h2 class="visually-hidden">Форма подписки</h2>
-                <form class="form container" method="get" name="subscribeForm" ng-submit="submitSubscribe(request)">
+                <form class="form container" method="post" name="subscribeForm" ng-submit="submitSubscribe(request)">
                     <b class="form__heading">Подпишись, чтобы ничего не пропустить: </b>
                     <div class="form-group">
                         <label class="form-fieldset form-fieldset--username">
@@ -75,7 +75,7 @@
                                    ng-required="true" autocomplete="off"/>
                             <span class="form-fieldset__label">Электронная почта</span>
                         </label>
-                        <button class="form__submit" type="submit">Отправить</button>
+                        <button class="form__submit" type="submit" ng-disabled="subscribeForm.$invalid">Отправить</button>
                     </div>
                 </form>
             </section>
@@ -200,7 +200,7 @@
         <div class="container">
             <section class="footer-form">
                 <h2 class="visually-hidden">Форма подписки</h2>
-                <form class="form container" method="get" name="subscribeForm" ng-submit="submitSubscribe(request)">
+                <form class="form container" method="post" name="subscribeForm" ng-submit="submitSubscribe(request)">
                     <b class="form__heading">Подпишись, чтобы ничего не пропустить: </b>
                     <div class="form-group">
                         <label class="form-fieldset form-fieldset--username">
@@ -214,7 +214,7 @@
                                    ng-required="true" autocomplete="off"/>
                             <span class="form-fieldset__label">Электронная почта</span>
                         </label>
-                        <button class="form__submit" type="submit">Отправить</button>
+                        <button class="form__submit" type="submit" ng-disabled="{subscribeForm.$invalid}">Отправить</button>
                     </div>
                 </form>
             </section>
@@ -231,10 +231,10 @@
     </footer>
 
     <modal-dialog show="isVideoShown" dialog-title="" on-close="toggleVideo">
-        <iframe width="100%" height="480" src="https://www.youtube.com/embed/kgaO45SyaO4?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+        <iframe width="100%" height="645px" src="https://www.youtube.com/embed/kgaO45SyaO4?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
     </modal-dialog>
-    <modal-dialog show="alert.isShow" dialog-title="{{ alert.title }}" on-close="toggleAlert">
-        <p>{{ alert.message }}</p>ng
+    <modal-dialog show="alert.isShow" dialog-title="{{ alert.title }}" on-close="toggleAlert" aria-label="alert-dialog">
+        <p>{{ alert.message }}</p>
     </modal-dialog>
 </div>
 <script src="./libs/angular.min.js"></script>

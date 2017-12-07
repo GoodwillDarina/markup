@@ -36,7 +36,6 @@ app.controller('landingCtrl', [
             }
             isSubmitInProgress = true;
 
-
             //function for success message
             $timeout(function () {
                 isSubmitInProgress = false;
