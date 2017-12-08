@@ -92,13 +92,14 @@
     background-color: $bg-color;
     box-shadow: 0 -1px 7px 0 rgba(0, 0, 0, 0.5);
 
-    transform: transform 0.3s ease;
+    transition: transform 0.3s ease;
 
     &.fixed {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
+      z-index: 20;
     }
     &.fixed-bottom {
       transform: translateY(-100%);
@@ -116,7 +117,7 @@
   }
   &-social.social {
     position: relative;
-    z-index: 5;
+    z-index: 15;
 
     margin: 12px -8px;
   }

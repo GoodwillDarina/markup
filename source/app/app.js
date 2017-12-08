@@ -232,6 +232,10 @@ app.directive('fixedScroll', ['$document', '$window', function ($document, $wind
 
     if($document[0].documentElement.scrollTop >= elementTop) {
       element.addClass('fixed');
+
+      if($document[0].documentElement.clientHeight + $document[0].documentElement.scrollTop >= elementBottom) {
+        element.addClass('fixed-bottom')
+      }
     }
 
     if (clientWidth >= 1024) {
