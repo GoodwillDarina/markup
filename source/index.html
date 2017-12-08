@@ -49,8 +49,7 @@
                 <div class="layer-area">
                     <div class="layer-phone on-draggable" ng-class="{'is-animate' : isAnimate}" draggable ng-mousedown="onDraggable()"></div>
                     <div class="layer-phone under-front"
-                         ng-class="{'is-animate' : isAnimate}"
-                    >
+                         ng-class="{'is-animate' : isAnimate}">
                         <div class="layer-burger">
                             <img src="./images/header/burger.png" width="349" height="311" alt="" />
                         </div>
@@ -214,7 +213,7 @@
                                    ng-required="true" autocomplete="off"/>
                             <span class="form-fieldset__label">Электронная почта</span>
                         </label>
-                        <button class="form__submit" type="submit" ng-disabled="{subscribeForm.$invalid}">Отправить</button>
+                        <button class="form__submit" type="submit" ng-disabled="subscribeForm.$invalid">Отправить</button>
                     </div>
                 </form>
             </section>
