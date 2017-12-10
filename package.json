@@ -31,9 +31,9 @@
   "dependencies": {
     "angular": "1.5.5",
     "angular-animate": "1.5.5",
-    "angular-scroll": "1.0.2",
     "angular-touch": "1.5.5",
     "ngmodal": "^2.0.1",
-    "normalize.css": "*"
+    "normalize.css": "*",
+    "simplebar": "^2.5.1"
   }
 }

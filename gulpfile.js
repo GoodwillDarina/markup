@@ -99,6 +99,7 @@ function copyFonts() {
 function copyCss() {
     return gulp.src([
         './node_modules/ngmodal/dist/ng-modal.css',
+        './node_modules/simplebar/dist/simplebar.css',
         './node_modules/normalize.css/normalize.css'
     ])
     .pipe(plumber())
@@ -107,6 +108,7 @@ function copyCss() {
 function copyLibraries() {
     return gulp.src([
         './node_modules/angular/angular.min.js',
+        './node_modules/simplebar/dist/simplebar.js',
         './source/libs/**/*.*'
     ])
     .pipe(plumber())

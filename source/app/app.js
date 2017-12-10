@@ -1,12 +1,13 @@
 require('angular-animate');
-require('angular-scroll');
 require('angular-touch');
 require('ngmodal');
 
 var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal']);
 app.controller('landingCtrl', [
-  '$scope', '$timeout', '$document', function ($scope, $timeout, $document) {
+  '$scope', '$timeout', '$document', '$window', function ($scope, $timeout, $document, $window) {
     var isSubmitInProgress = false;
+    var clientWidth = $document[0].documentElement.clientWidth;
+
     $scope.isVideoShown = false;
     $scope.alert = {
       message: 'It is ok!',
@@ -15,7 +16,30 @@ app.controller('landingCtrl', [
     };
     $scope.loadPage = function () {
       $timeout(function () {
-        $scope.isAnimate = $document[0].documentElement.clientWidth >= 1024;
+        $scope.isAnimate = clientWidth >= 1024;
+
+        if (clientWidth >= 1024) {
+          var scrollElement = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-scroll-content');
+
+          var elementFixed = $document[0].documentElement.querySelector('.header-form');
+          var elementTop = elementFixed.getBoundingClientRect().top + $window.pageYOffset - $document[0].documentElement.clientTop;
+          var elementBottom = $document[0].documentElement.querySelector('.footer').offsetTop;
+
+
+          scrollElement.addEventListener('scroll', function () {
+            var scrollTop = scrollElement.scrollTop;
+            var scrollBottom = scrollElement.clientHeight + scrollTop;
+
+            if(scrollTop >= elementTop && scrollBottom <= elementBottom) {
+              elementFixed.classList.add('fixed');
+              elementFixed.classList.remove('fixed-bottom');
+            } else if(scrollTop < elementTop) {
+              elementFixed.classList.remove('fixed');
+            } else if(scrollBottom >= elementBottom) {
+              elementFixed.classList.add('fixed-bottom');
+            }
+          })
+        }
       });
     };
     $scope.request = {
@@ -45,7 +69,9 @@ app.controller('landingCtrl', [
 
     $scope.onDraggable = function () {
       $scope.isAnimate = false;
-    }
+    };
+
+
   }]);
 
 app.directive('draggable', ['$document', '$window', '$timeout', function ($document, $window, $timeout) {
@@ -54,7 +80,6 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
       var ua = window.navigator.userAgent.toLowerCase();
       var isIe = (/trident/gi).test(ua) || (/msie/gi).test(ua);
       var clientWidth = $document[0].documentElement.clientWidth;
-      // var widthScrollbar = $window.innerWidth - clientWidth;
 
       if (!isIe && clientWidth >= 1024) {
         var mouseOffset;
@@ -76,9 +101,8 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
         var burger = phoneBorder.children().children();
         var burgerPosition = {
           x: burger[0].getBoundingClientRect().x,
-          y: 230
+          y: burger[0].getBoundingClientRect().y
         };
-
 
         element.on('mousedown', mousedown);
 
@@ -119,7 +143,6 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
             top: burgerPosition.y - getElementOffset().y - 14 + 'px',
             left: burgerPosition.x - getElementOffset().x - 14 + 'px'
           });
-
           return false;
         }
 
@@ -222,36 +245,5 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
         }
       }
     });
-  };
-}]);
-app.directive('fixedScroll', ['$document', '$window', function ($document, $window) {
-  return function (scope, element, attr) {
-    var clientWidth = $document[0].documentElement.clientWidth;
-    var elementTop = element[0].getBoundingClientRect().top + $window.pageYOffset - $document[0].documentElement.clientTop;
-    var elementBottom = $document[0].documentElement.querySelector('.footer').offsetTop;
-
-    if($document[0].documentElement.scrollTop >= elementTop) {
-      element.addClass('fixed');
-
-      if($document[0].documentElement.clientHeight + $document[0].documentElement.scrollTop >= elementBottom) {
-        element.addClass('fixed-bottom')
-      }
-    }
-
-    if (clientWidth >= 1024) {
-      $window.addEventListener('scroll', function () {
-        var scrollTop = $document[0].documentElement.scrollTop;
-        var scrollBottom = $document[0].documentElement.clientHeight + scrollTop;
-
-        if(scrollTop >= elementTop && scrollBottom <= elementBottom) {
-          element.addClass('fixed');
-          element.removeClass('fixed-bottom');
-        } else if(scrollTop < elementTop) {
-          element.removeClass('fixed');
-        } else if(scrollBottom >= elementBottom) {
-          element.addClass('fixed-bottom');
-        }
-      })
-    }
   };
 }]);
