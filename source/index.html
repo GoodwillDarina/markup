@@ -228,8 +228,18 @@
             </div>
         </footer>
 
-        <modal-dialog show="isVideoShown" dialog-title="" on-close="toggleVideo">
+        <modal-dialog show="isVideoShown" dialog-title="" on-close="toggleVideo" aria-label="video-dialog">
             <iframe width="100%" height="645px" src="https://www.youtube.com/embed/kgaO45SyaO4?rel=0&enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+        </modal-dialog>
+        <modal-dialog show="isConfirmShown" dialog-title="Второй этап заявки" on-close="toggleConfirm">
+            <div class="modal-form">
+                <label class="form-checkbox">
+                    <input class="form-checkbox__hidden" type="checkbox" name="agreeUser" ng-model="agreeUser" />
+                    <span class="form-checkbox__label">Я на все согласен, все прочитал и понимаю все риски.</span>
+                </label>
+
+                <button class="modal-form__btn" type="button" ng-click="toggleConfirm(true)" ng-disabled="!agreeUser">Отправить заявку</button>
+            </div>
         </modal-dialog>
         <modal-dialog show="alert.isShow" dialog-title="{{ alert.title }}" on-close="toggleAlert" aria-label="alert-dialog">
             <p>{{ alert.message }}</p>

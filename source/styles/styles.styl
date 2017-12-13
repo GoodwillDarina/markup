@@ -42,11 +42,16 @@ main {
   margin: -1px;
 }
 .ng-modal-dialog {
+  max-width: 650px;
+  width: 100%;
+  padding: 50px;
+  border-radius: 13px;
+  box-shadow: 0 0 30px 0 #00c4ff;
+}
+.ng-modal[aria-label="video-dialog"] .ng-modal-dialog{
   max-width: 1170px;
   width: 85%;
   padding: 16px;
-  border-radius: 13px;
-  box-shadow: 0 0 30px 0 #00c4ff;
 }
 .ng-modal[aria-label="alert-dialog"] .ng-modal-dialog{
   width: 330px;
@@ -101,6 +106,65 @@ main {
 }
 .simplebar-scrollbar {
   cursor: pointer;
+}
+.modal-form {
+  margin: 30px 0 0;
+}
+.form-checkbox {
+  position: relative;
+  width: 100%;
+}
+.form-checkbox__hidden {
+  position: absolute;
+  visibility: hidden;
+  top: 0;
+
+  &:checked + .form-checkbox__label::before {
+    background-image: url("../images/icons/checkbox-checked.svg");
+  }
+}
+.form-checkbox__label {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+
+  color: #16205d;
+  font-family: inherit;
+  font-size: 18px;
+  line-height: 32px;
+
+  cursor: pointer;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    size: 32px;
+    margin-right: 12px;
+
+    background: transparent url("../images/icons/checkbox.svg") no-repeat center;
+    background-size: 32px 32px;
+  }
+}
+.modal-form__btn {
+  display: block;
+  width: 265px;
+  height: 48px;
+  margin: 30px auto 0;
+  border: 2px solid #2ca8f5;
+  border-radius: 2px;
+
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+  background-color: #2ca8f5;
+
+  &[disabled] {
+    border: 2px solid #bdc3d7;
+    background-color: #bdc3d7;
+  }
 }
 @require './common/page-layout';
 @require './common/*';

@@ -3,23 +3,33 @@ require('angular-touch');
 require('ngmodal');
 
 var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal']);
+var scrollElement, scrollContent;
+
 app.controller('landingCtrl', [
   '$scope', '$timeout', '$document', '$window', function ($scope, $timeout, $document, $window) {
     var isSubmitInProgress = false;
     var clientWidth = $document[0].documentElement.clientWidth;
 
     $scope.isVideoShown = false;
+    $scope.isConfirmShown = false;
+    $scope.agreeUser = false;
+
+    $scope.request = {
+        username: '',
+        email: ''
+    };
     $scope.alert = {
       message: 'It is ok!',
       title: 'Success',
       isShow: false
     };
-    $scope.loadPage = function () {
+    $scope.loadPage = function() {
       $timeout(function () {
         $scope.isAnimate = clientWidth >= 1024;
 
         if (clientWidth >= 1024) {
-          var scrollElement = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-scroll-content');
+          scrollElement = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-scroll-content');
+          scrollContent = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-content');
 
           var elementFixed = $document[0].documentElement.querySelector('.header-form');
           var elementTop = elementFixed.getBoundingClientRect().top + $window.pageYOffset - $document[0].documentElement.clientTop;
@@ -42,19 +52,23 @@ app.controller('landingCtrl', [
         }
       });
     };
-    $scope.request = {
-      username: '',
-      email: ''
-    };
 
-    $scope.toggleVideo = function () {
+    $scope.toggleVideo = function() {
       $scope.isVideoShown = !$scope.isVideoShown;
     };
-    $scope.toggleAlert = function () {
+    $scope.toggleAlert = function() {
       $scope.alert.isShow = !$scope.alert.isShow;
     };
+    $scope.toggleConfirm = function(isAgree) {
+      $scope.isConfirmShown = !$scope.isConfirmShown;
 
-    $scope.submitSubscribe = function (request) {
+      if(isAgree) {
+        console.warn('agreeUser');
+        $scope.toggleAlert();
+      }
+    };
+
+    $scope.submitSubscribe = function(request) {
       if (isSubmitInProgress) {
         return;
       }
@@ -63,14 +77,13 @@ app.controller('landingCtrl', [
       //function for success message
       $timeout(function () {
         isSubmitInProgress = false;
-        $scope.toggleAlert();
+        $scope.toggleConfirm();
       });
     };
 
-    $scope.onDraggable = function () {
+    $scope.onDraggable = function() {
       $scope.isAnimate = false;
     };
-
 
   }]);
 
@@ -152,12 +165,11 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
         }
 
         function getElementOffset() {
-          var de = $document[0].documentElement;
           var box = element[0].getBoundingClientRect();
 
           return {
-            y: box.top + $window.pageYOffset - de.clientTop,
-            x: box.left + $window.pageXOffset - de.clientLeft
+            y: box.top + $window.pageYOffset - scrollContent.getBoundingClientRect().top,
+            x: box.left + $window.pageXOffset - scrollContent.getBoundingClientRect().left
           };
         }
 
