@@ -1,14 +1,18 @@
 .form {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: center;
   flex-wrap: wrap;
 
   size: 100% auto;
-  padding: 25px 10px 22px;
+  padding: 25px 15px 22px;
+  &-stores {
 
+  }
 
   &__heading {
+    max-width: 250px;
+
     flex: 1 0 auto;
     margin: 0 0 10px;
 
@@ -18,6 +22,11 @@
     line-height: 1.8;
     letter-spacing: 1px;
     color: $text-color;
+
+    @media screen and (max-width: 1100px) {
+      max-width: none;
+      padding: 0 20px;
+    }
   }
   &-group {
     position: relative;

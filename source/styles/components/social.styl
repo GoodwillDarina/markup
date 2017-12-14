@@ -1,4 +1,4 @@
-.social {
+.social, .stores {
   white-space: nowrap;
   width: auto;
   padding: 0;
@@ -10,7 +10,7 @@
     display: inline-block;
     vertical-align: top;
 
-    a {
+    a:not([aria-label="store"]) {
       display: inline-block;
       size: 54px;
 
@@ -25,6 +25,11 @@
       &[aria-label="twitter"] {
         background-image: url('../images/icons/twitter.svg')
       }
+    }
+    a[aria-label="store"] {
+      display: inline-block;
+      size: 120px 40px;
+      cursor: pointer;
     }
   }
 }
