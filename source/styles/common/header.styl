@@ -121,6 +121,17 @@
     top: 10px;
     z-index: 15;
     margin: 12px -8px;
+
+    transition: top 0.25s, right 0.25s;
+
+    @media screen and (max-width: 1440px) {
+      right: 20px;
+      top: 0;
+
+      a:not([aria-label="store"]) {
+        size: 32px;
+      }
+    }
   }
   &-stores.stores {
     position: absolute;

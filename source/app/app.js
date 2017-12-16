@@ -3,6 +3,11 @@ require('angular-touch');
 require('ngmodal');
 
 var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal']);
+var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+if(!isMobile) {
+  new SimpleBar(document.getElementById('wrap'));
+}
 var scrollElement, scrollContent;
 
 app.controller('landingCtrl', [
