@@ -99,7 +99,7 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
       var isIe = (/trident/gi).test(ua) || (/msie/gi).test(ua);
       var clientWidth = $document[0].documentElement.clientWidth;
 
-      if (!isIe) {
+      if (!isIe && clientWidth >= 1024) {
         var mouseOffset;
         var newOffset = {
           x: null,
