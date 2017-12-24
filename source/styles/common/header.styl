@@ -6,7 +6,7 @@
   background-image: url("../images/header/burger_agressive.jpg"), linear-gradient(to right, #07a9eb 40%, #1e2b6c 60%);
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: auto 900px,auto;
+  background-size: auto 900px, auto;
 
   & > .container {
     display: flex;
@@ -229,6 +229,12 @@
       animation-delay: 5s;
       animation-iteration-count: infinite;
     }
+    .layer-hint {
+      animation-name: dragme-hint;
+      animation-duration: 20s;
+      animation-timing-function: step-middle;
+      animation-iteration-count: infinite;
+    }
   }
   &.on-draggable {
     z-index: 5;
@@ -254,7 +260,7 @@
   size: 298px 640px;
   margin: auto;
   overflow: hidden;
-  border-radius: 26px;
+  border-radius: 20px;
   background: rgba(0, 0, 0, 0.15);
 
   img {
@@ -262,6 +268,19 @@
     top: 120px;
     left: -52px;
   }
+}
+
+.layer-hint {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  text-align: center;
+  margin: auto;
+  padding: 30px 0 10px;
+  background: #1e2b6c;
+  color: #ffffff;
 }
 
 @keyframes dragme {
@@ -278,6 +297,7 @@
     transform: translateX(0px);
   }
 }
+
 @keyframes dragme-glow {
   0% {
     box-shadow: none;
@@ -302,5 +322,20 @@
   }
   30% {
     transform: translateX(0px);
+  }
+}
+
+@keyframes dragme-hint {
+  0% {
+    transform: translateY(-100%);
+  }
+  5% {
+    transform: translateY(-100%);
+  }
+  95% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
