@@ -8,6 +8,7 @@ var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.
 if(!isMobile) {
   new SimpleBar(document.getElementById('wrap'));
 }
+
 var scrollElement, scrollContent;
 
 app.controller('landingCtrl', [
@@ -33,8 +34,14 @@ app.controller('landingCtrl', [
         $scope.isAnimate = clientWidth >= 1024;
 
         if (clientWidth >= 1024) {
-          scrollElement = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-scroll-content');
-          scrollContent = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-content');
+          if(!isMobile) {
+            scrollElement = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-scroll-content');
+            scrollContent = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-content');
+          } else {
+            // scrollElement = $document[0].documentElement.querySelector('.page-wrap');
+            scrollElement = $window;
+            scrollContent = $document[0].documentElement;
+          }
 
           var elementFixed = $document[0].documentElement.querySelector('.header-form');
           var elementTop = elementFixed.getBoundingClientRect().top + $window.pageYOffset - $document[0].documentElement.clientTop;
@@ -42,8 +49,9 @@ app.controller('landingCtrl', [
 
 
           scrollElement.addEventListener('scroll', function () {
-            var scrollTop = scrollElement.scrollTop;
-            var scrollBottom = scrollElement.clientHeight + scrollTop;
+            console.log('scr');
+            var scrollTop = isMobile ? scrollContent.scrollTop : scrollElement.scrollTop;
+            var scrollBottom = isMobile ? scrollContent.clientHeight + scrollTop : scrollElement.clientHeight + scrollTop;
 
             if(scrollTop >= elementTop && scrollBottom <= elementBottom) {
               elementFixed.classList.add('fixed');
@@ -170,11 +178,13 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
         }
 
         function getElementOffset() {
+          var topCoord = isMobile ? $document[0].documentElement.clientTop: scrollContent.getBoundingClientRect().top;
+          var leftCoord = isMobile ? $document[0].documentElement.clientLeft: scrollContent.getBoundingClientRect().left
           var box = element[0].getBoundingClientRect();
 
           return {
-            y: box.top + $window.pageYOffset - scrollContent.getBoundingClientRect().top,
-            x: box.left + $window.pageXOffset - scrollContent.getBoundingClientRect().left
+            y: box.top + $window.pageYOffset - topCoord,
+            x: box.left + $window.pageXOffset - leftCoord
           };
         }
 
