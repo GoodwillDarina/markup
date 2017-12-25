@@ -13,15 +13,15 @@ var scrollElement, scrollContent;
 
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('en', {
-    'TITLE': 'Hello',
-    'FOO': 'This is a paragraph',
-	'FB_URL': 'http://fb.com'
+	'YT_URL': 'https://www.youtube.com/embed/b_cnm-30frQ?rel=0&enablejsapi=1',
+	'INTRO_HEADING': 'AR editor & community on blockchain steroids',
+	'INTRO_TEXT': 'Re-imagine the world around you by adding new features to ordinary objects. Enjoy the benefits of blockchain and earn cryptocurrency for helping our community.'
   });
  
   $translateProvider.translations('ru', {
-    'TITLE': 'Hallo',
-    'FOO': 'Dies ist ein Absatz',
-	'FB_URL': 'http://fb.ru'	
+	'YT_URL': 'https://www.youtube.com/embed/3l6YcgeC9lw?rel=0&enablejsapi=1',
+	'INTRO_HEADING': 'AR editor & community on blockchain steroids',
+	'INTRO_TEXT': 'Re-imagine the world around you by adding new features to ordinary objects. Enjoy the benefits of blockchain and earn cryptocurrency for helping our community.'
   });
  
   $translateProvider.determinePreferredLanguage();
@@ -54,6 +54,7 @@ app.controller('landingCtrl', [
             scrollElement = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-scroll-content');
             scrollContent = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-content');
           } else {
+            // scrollElement = $document[0].documentElement.querySelector('.page-wrap');
             scrollElement = $window;
             scrollContent = $document[0].documentElement;
           }
@@ -193,8 +194,8 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
         }
 
         function getElementOffset() {
-          var topCoord = isMobile ? $document[0].documentElement.clientTop : scrollContent.getBoundingClientRect().top;
-          var leftCoord = isMobile ? $document[0].documentElement.clientLeft : scrollContent.getBoundingClientRect().left;
+          var topCoord = isMobile ? $document[0].documentElement.clientTop: scrollContent.getBoundingClientRect().top;
+          var leftCoord = isMobile ? $document[0].documentElement.clientLeft: scrollContent.getBoundingClientRect().left
           var box = element[0].getBoundingClientRect();
 
           return {
