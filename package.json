@@ -10,7 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "add-stream": "^1.0.0",
-    "browser-sync": "^2.2.3",
+    "browser-sync": "^2.21.0",
     "browserify": "^13.0.0",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
@@ -25,14 +25,14 @@
     "path": "^0.12.7",
     "stylus": "*",
     "stylus-type-utils": "*",
-    "vinyl-buffer": "^1.0.0",
-    "vinyl-source-stream": "^1.1.0"
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^1.1.2"
   },
   "dependencies": {
     "angular": "1.5.5",
     "angular-animate": "1.5.5",
-    "angular-translate": "2.17.0",
     "angular-touch": "1.5.5",
+    "angular-translate": "^2.17.0",
     "ngmodal": "^2.0.1",
     "normalize.css": "*",
     "simplebar": "^2.5.1"
