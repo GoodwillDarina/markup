@@ -11,9 +11,11 @@
     <link href="./images/favicon-32x32.png" rel="icon" type="image/png" sizes="32x32">
     <link href="./images/favicon-16x16.png" rel="icon" type="image/png" sizes="16x16">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,500" rel="stylesheet">
-    <link href="./styles/styles.css" rel="stylesheet">
+    <link href="./styles/styles.css" rel="stylesheet">	
+	<script src="./libs/angular.min.js"></script>	
 </head>
-<body ng-controller="landingCtrl" ng-init="loadPage()">
+
+<body ng-controller="landingCtrl" ng-init="loadPage()" >  
     <div class="page-wrap" id="wrap">
         <div class="page-content">
             <header class="page-header header">
@@ -23,9 +25,9 @@
                             <img class="logo__img" src="./images/logo.png" srcset="./images/logo@2x.png 2x" width="167" height="36" alt=""/>
                         </h1>
                     </div>
-                    <section class="header-intro">
-                        <h2 class="header-intro__heading">{{ 'INTRO_HEADING' | translate }}</h2>
-                        <p class="header-intro__description">
+                    <section class="header-intro" >
+                        <h2 class="header-intro__heading" ng-cloak>{{ 'INTRO_HEADING' | translate }}</h2>
+                        <p class="header-intro__description" ng-cloak>
 						{{ 'INTRO_TEXT' | translate }}                            
                         </p>
 
@@ -257,9 +259,9 @@
             <p>{{ alert.message }}</p>
         </modal-dialog>
     </div>
-    <script src="./libs/angular.min.js"></script>
-    <script src="./libs/simplebar.js"></script>
-    <script src="./libs/angular-translate.min.js"></script>	
-    <script src="./scripts/app.js"></script>
+
+	<script src="./libs/simplebar.js"></script>	
+	<script src="./libs/angular-translate.min.js"></script>	
+	<script src="./scripts/app.js"></script>	   
 </body>
 </html>
