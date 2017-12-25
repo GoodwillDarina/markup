@@ -6,8 +6,11 @@
 
   size: 100% auto;
   padding: 25px 15px 22px;
-  &-stores {
 
+  &-stores {
+    @media screen and (max-width: 1023px) {
+      display: none;
+    }
   }
 
   &__heading {
@@ -22,6 +25,27 @@
     line-height: 1.8;
     letter-spacing: 1px;
     color: $text-color;
+
+    @media screen and (max-width: 1023px) {
+      display: none;
+    }
+  }
+  &__heading-btn {
+    display: block;
+    text-align: left;
+
+    width: 100%;
+    padding: 0;
+    border: none;
+
+    font-family: $proxima;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.8;
+    letter-spacing: 1px;
+    color: $white;
+    background: transparent;
+    -webkit-appearance: none;
   }
   &-group {
     position: relative;
@@ -30,6 +54,14 @@
     justify-content: flex-start;
 
     margin: 0 0 10px;
+
+    @media screen and (max-width: 1023px) {
+      display: none;
+
+      &.is-show {
+        display: block;
+      }
+    }
   }
   &-fieldset {
     position: relative;
@@ -42,6 +74,16 @@
     }
     &--mail {
       width: 286px;
+    }
+
+    @media screen and (max-width: 1023px) {
+      display: block;
+      width: 100%;
+
+      &--username,
+      &--mail {
+        width: 100%;
+      }
     }
   }
   &-fieldset__label {

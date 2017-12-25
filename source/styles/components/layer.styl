@@ -1,0 +1,196 @@
+.layer-front {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: transparent;
+  background-image: url('../images/header/blue_frame.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 900px;
+}
+
+.layer-area {
+  position: relative;
+
+  max-width: 1024px;
+  width: 70%;
+  height: 900px;
+
+  @media all and (-ms-high-contrast: none) {
+    float: right;
+  }
+}
+
+.layer-phone {
+  position: absolute;
+  bottom: 0;
+  top: -32px;
+  right: 135px;
+  overflow: hidden;
+
+  width: 326px;
+  height: 670px;
+  padding: 14px;
+  margin: auto;
+  border-radius: 35px;
+
+  &.under-front.is-animate {
+    animation-name: dragme-glow, dragme;
+    animation-duration: 10s, 10s;
+    animation-timing-function: step-middle;
+    animation-delay: 2s, 5s;
+    animation-iteration-count: infinite;
+
+    .layer-burger img {
+      animation-name: dragme-burger;
+      animation-duration: 10s;
+      animation-timing-function: step-middle;
+      animation-delay: 5s;
+      animation-iteration-count: infinite;
+    }
+    .layer-hint {
+      display: block;
+      animation-name: dragme-hint;
+      animation-duration: 10s;
+      animation-timing-function: step;
+      animation-iteration-count: infinite;
+    }
+  }
+  &.on-draggable {
+    z-index: 5;
+
+    &.is-animate {
+      animation-name: dragme;
+      animation-duration: 10s;
+      animation-timing-function: step-middle;
+      animation-delay: 5s;
+      animation-iteration-count: infinite;
+    }
+  }
+}
+
+.layer-border {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.layer-burger {
+  position: relative;
+  size: 298px 640px;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.15);
+
+  img {
+    position: absolute;
+    top: 120px;
+    left: -52px;
+  }
+}
+
+.layer-hint {
+  position: absolute;
+  top: -2px;
+  left: 0;
+  right: 0;
+
+  display: none;
+  text-align: center;
+  margin: auto;
+  padding: 32px 0 16px;
+  background: #1e2b6c;
+
+  font-family: 'ProximaNova','Rubik','Arial',sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #ffffff;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+
+    content: '';
+    display: block;
+    size: 70px 40px;
+    margin: auto;
+
+    background-image: url('../images/icons/arrows.svg');
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  &::before {
+    left: 0;
+    transform: rotate(180deg);
+  }
+  &::after {
+    right: 0;
+  }
+}
+
+@keyframes dragme {
+  0% {
+    transform: translateX(0px);
+  }
+  10% {
+    transform: translateX(135px);
+  }
+  20% {
+    transform: translateX(-135px);
+  }
+  30% {
+    transform: translateX(0px);
+  }
+}
+@keyframes dragme-glow {
+  0% {
+    box-shadow: none;
+  }
+  15% {
+    box-shadow: 0 0 100px 10px #00b5ff;
+  }
+  30% {
+    box-shadow: none;
+  }
+}
+@keyframes dragme-burger {
+  0% {
+    transform: translateX(0px);
+  }
+  10% {
+    transform: translateX(-135px);
+  }
+  20% {
+    transform: translateX(135px);
+  }
+  30% {
+    transform: translateX(0px);
+  }
+}
+@keyframes dragme-hint {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  25% {
+    transform: translateY(-100%);
+  }
+  75% {
+    transform: translateY(-100%);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

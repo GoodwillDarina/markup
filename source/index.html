@@ -23,6 +23,17 @@
                             <img class="logo__img" src="./images/logo.png" srcset="./images/logo@2x.png 2x" width="167" height="36" alt=""/>
                         </h1>
                     </div>
+                    <div class="header-actions is-mobile">
+                        <button class="header-actions__btn-video js-open-video" type="button" ng-click="toggleVideo()">WATCH VIDEO</button>
+
+                        <ul class="stores">
+                            <li class="stores-item">
+                                <a href="#" aria-label="store">
+                                    <img src="./images/app-store-en.svg" width="120" height="40" alt="Download on the App Store">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <section class="header-intro">
                         <h2 class="header-intro__heading">{{ 'TITLE' | translate }}</h2>
                         <p class="header-intro__description">
@@ -31,7 +42,14 @@
                             expos of other people, collaborate to create AR art, and share the results with the rest of the
                             world.
                         </p>
-
+                        <ul class="header-intro-social social is-mobile">
+                            <li class="social-item">
+                                <a href="{{ 'FB_URL' | translate }}" aria-label="facebook">Facebook</a>
+                            </li>
+                            <li class="social-item">
+                                <a href="twitter.com" aria-label="twitter">Twitter</a>
+                            </li>
+                        </ul>
                         <button class="header-intro__btn-video js-open-video" type="button" ng-click="toggleVideo()">WATCH VIDEO</button>
                     </section>
                 </section>
@@ -76,6 +94,9 @@
                             </li>
                         </ul>
                         <b class="form__heading">Подпишись, чтобы ничего не пропустить: </b>
+                        <button class="form__heading-btn is-mobile">Подпишись, чтобы ничего не пропустить:
+                            <span class="btn-img"></span>
+                        </button>
                         <div class="form-group">
                             <label class="form-fieldset form-fieldset--username">
                                 <input class="form-fieldset__input" type="text" name="username" ng-model="request.username"
@@ -234,12 +255,14 @@
 
                 <ul class="footer-social social">
                     <li class="social-item">
-                        <a href="facebook.com" aria-label="facebook">Facebook</a>
+                        <a href="{{ 'FB_URL' | translate }}" aria-label="facebook">Facebook</a>
                     </li>
                     <li class="social-item">
                         <a href="twitter.com" aria-label="twitter">Twitter</a>
                     </li>
                 </ul>
+
+                <div class="footer-copyright is-mobile">© DRIMZ 2017</div>
             </div>
         </footer>
 
@@ -262,7 +285,7 @@
     </div>
     <script src="./libs/angular.min.js"></script>
     <script src="./libs/simplebar.js"></script>
-    <script src="./libs/angular-translate.min.js"></script>	
+    <script src="./libs/angular-translate.min.js"></script>
     <script src="./scripts/app.js"></script>
 </body>
 </html>

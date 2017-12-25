@@ -54,7 +54,6 @@ app.controller('landingCtrl', [
             scrollElement = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-scroll-content');
             scrollContent = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-content');
           } else {
-            // scrollElement = $document[0].documentElement.querySelector('.page-wrap');
             scrollElement = $window;
             scrollContent = $document[0].documentElement;
           }
@@ -194,8 +193,8 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
         }
 
         function getElementOffset() {
-          var topCoord = isMobile ? $document[0].documentElement.clientTop: scrollContent.getBoundingClientRect().top;
-          var leftCoord = isMobile ? $document[0].documentElement.clientLeft: scrollContent.getBoundingClientRect().left
+          var topCoord = isMobile ? $document[0].documentElement.clientTop : scrollContent.getBoundingClientRect().top;
+          var leftCoord = isMobile ? $document[0].documentElement.clientLeft : scrollContent.getBoundingClientRect().left;
           var box = element[0].getBoundingClientRect();
 
           return {
