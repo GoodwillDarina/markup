@@ -109,6 +109,7 @@ function copyLibraries() {
     return gulp.src([
         './node_modules/angular/angular.min.js',
         './node_modules/simplebar/dist/simplebar.js',
+        './node_modules/angular-translate/dist/angular-translate.min.js',		
         './source/libs/**/*.*'
     ])
     .pipe(plumber())

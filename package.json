@@ -31,6 +31,7 @@
   "dependencies": {
     "angular": "1.5.5",
     "angular-animate": "1.5.5",
+    "angular-translate": "2.17.0",
     "angular-touch": "1.5.5",
     "ngmodal": "^2.0.1",
     "normalize.css": "*",

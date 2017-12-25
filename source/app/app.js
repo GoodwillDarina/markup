@@ -2,7 +2,7 @@ require('angular-animate');
 require('angular-touch');
 require('ngmodal');
 
-var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal']);
+var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal', 'pascalprecht.translate']);
 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 
 if(!isMobile) {
@@ -10,6 +10,22 @@ if(!isMobile) {
 }
 
 var scrollElement, scrollContent;
+
+app.config(['$translateProvider', function ($translateProvider) {
+  $translateProvider.translations('en', {
+    'TITLE': 'Hello',
+    'FOO': 'This is a paragraph',
+	'FB_URL': 'http://fb.com'
+  });
+ 
+  $translateProvider.translations('ru', {
+    'TITLE': 'Hallo',
+    'FOO': 'Dies ist ein Absatz',
+	'FB_URL': 'http://fb.ru'	
+  });
+ 
+  $translateProvider.determinePreferredLanguage();
+}]);
 
 app.controller('landingCtrl', [
   '$scope', '$timeout', '$document', '$window', function ($scope, $timeout, $document, $window) {
