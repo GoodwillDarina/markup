@@ -140,18 +140,6 @@
     z-index: 15;
 
     margin: 12px 0;
-
-    @media screen and (max-width: 1365px) {
-      right: 12%;
-    }
-
-    @media screen and (max-width: 1220px) {
-      right: 13%;
-    }
-
-    @media screen and (max-width: 1024px) {
-      right: 13.5%;
-    }
   }
 }
 
@@ -212,9 +200,6 @@
   margin: auto;
   border-radius: 35px;
 
-  @media screen and (max-width: 1365px) {
-    right: 5%;
-  }
   &.under-front.is-animate {
     animation-name: dragme-glow, dragme;
     animation-duration: 10s, 10s;
@@ -231,8 +216,8 @@
     }
     .layer-hint {
       animation-name: dragme-hint;
-      animation-duration: 20s;
-      animation-timing-function: step-middle;
+      animation-duration: 10s;
+      animation-timing-function: step;
       animation-iteration-count: infinite;
     }
   }
@@ -327,12 +312,18 @@
 
 @keyframes dragme-hint {
   0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  25% {
     transform: translateY(-100%);
   }
-  5% {
+  75% {
     transform: translateY(-100%);
   }
-  95% {
+  80% {
     transform: translateY(0);
   }
   100% {
