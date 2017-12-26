@@ -24,7 +24,7 @@ app.config(['$translateProvider', function ($translateProvider) {
 	'INTRO_TEXT': 'Re-imagine the world around you by adding new features to ordinary objects. Enjoy the benefits of blockchain and earn cryptocurrency for helping our community.'
   });
  
-  $translateProvider.determinePreferredLanguage();
+  $translateProvider.uniformLanguageTag('iso639-1').determinePreferredLanguage();
 }]);
 
 app.controller('landingCtrl', [
