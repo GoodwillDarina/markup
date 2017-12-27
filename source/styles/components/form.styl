@@ -31,21 +31,25 @@
     }
   }
   &__heading-btn {
-    display: block;
     text-align: left;
 
     width: 100%;
-    padding: 0;
+    padding: 0 50px 0 0;
     border: none;
 
     font-family: $proxima;
-    font-size: 20px;
+    font-size: 26px;
     font-weight: bold;
-    line-height: 1.8;
-    letter-spacing: 1px;
+    line-height: 38px;
     color: $white;
     background: transparent;
     -webkit-appearance: none;
+
+    .hamburger {
+      position: absolute;
+      top: 12px;
+      right: 2px;
+    }
   }
   &-group {
     position: relative;
@@ -57,6 +61,7 @@
 
     @media screen and (max-width: 1023px) {
       display: none;
+      width: 400px;
 
       &.is-show {
         display: block;
@@ -79,6 +84,7 @@
     @media screen and (max-width: 1023px) {
       display: block;
       width: 100%;
+      margin-bottom: 25px;
 
       &--username,
       &--mail {
@@ -98,6 +104,13 @@
     color: $text-color;
 
     transition: all 0.25s;
+
+
+    @media screen and (max-width: 1023px) {
+      font-size: 24px;
+      line-height: 52px;
+      color: $white;
+    }
   }
   &-fieldset__input {
     width: 100%;
@@ -127,6 +140,26 @@
         color: $red;
       }
     }
+
+
+    @media screen and (max-width: 1023px) {
+      height: 70px;
+      padding-top: 28px;
+      border-bottom: 2px solid #ffffff;
+
+      font-size: 24px;
+      color: #ffffff;
+
+      &:focus,
+      &.ng-not-empty {
+        & + .form-fieldset__label {
+          top: -13px;
+          font-size: 18px;
+          line-height: 52px;
+          color: $bg-color;
+        }
+      }
+    }
   }
 
   &__submit {
@@ -138,12 +171,37 @@
     font-size: 16px;
     font-weight: 500;
     line-height: 26px;
-    color: $text-color
+    color: $text-color;
     background: transparent;
     cursor: pointer;
 
     &[disabled] {
       cursor: no-drop;
+    }
+
+
+    @media screen and (max-width: 1023px) {
+      width: 100%;
+      padding: 15px;
+      margin: 10px 0 0;
+      border-color: $bg-color;
+
+      font-size: 24px;
+      line-height: 1;
+      color: $white;
+      background: $bg-color;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        vertical-align: text-top;
+
+        size: 28px;
+        margin-right: 20px;
+
+        background: transparent url('../images/icons/send.svg') no-repeat center;
+        background-size: 28px;
+      }
     }
   }
 }

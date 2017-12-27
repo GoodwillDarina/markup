@@ -2,14 +2,14 @@ require('angular-animate');
 require('angular-touch');
 require('ngmodal');
 
-var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal', 'pascalprecht.translate']);
 var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+var scrollElement, scrollContent;
 
 if(!isMobile) {
   new SimpleBar(document.getElementById('wrap'));
 }
 
-var scrollElement, scrollContent;
+var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal', 'pascalprecht.translate']);
 
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('en', {
@@ -17,7 +17,7 @@ app.config(['$translateProvider', function ($translateProvider) {
 	'INTRO_HEADING': 'AR editor & community on blockchain steroids',
 	'INTRO_TEXT': 'Re-imagine the world around you by adding new features to ordinary objects. Enjoy the benefits of blockchain and earn cryptocurrency for helping our community.'
   });
- 
+
   $translateProvider.translations('ru', {
 	'YT_URL': 'https://www.youtube.com/embed/3l6YcgeC9lw?rel=0&enablejsapi=1',
 	'INTRO_HEADING': 'AR editor & community on blockchain steroids',
@@ -33,6 +33,8 @@ app.controller('landingCtrl', [
     var clientWidth = $document[0].documentElement.clientWidth;
 
     $scope.isVideoShown = false;
+    $scope.isLoadDrag = false;
+    $scope.isOpenForm = false;
     $scope.isConfirmShown = false;
     $scope.agreeUser = false;
 
@@ -54,7 +56,6 @@ app.controller('landingCtrl', [
             scrollElement = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-scroll-content');
             scrollContent = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-content');
           } else {
-            // scrollElement = $document[0].documentElement.querySelector('.page-wrap');
             scrollElement = $window;
             scrollContent = $document[0].documentElement;
           }
@@ -65,7 +66,6 @@ app.controller('landingCtrl', [
 
 
           scrollElement.addEventListener('scroll', function () {
-            console.log('scr');
             var scrollTop = isMobile ? scrollContent.scrollTop : scrollElement.scrollTop;
             var scrollBottom = isMobile ? scrollContent.clientHeight + scrollTop : scrollElement.clientHeight + scrollTop;
 
@@ -79,6 +79,8 @@ app.controller('landingCtrl', [
             }
           })
         }
+
+        $scope.isLoadDrag = true;
       });
     };
 
@@ -87,6 +89,9 @@ app.controller('landingCtrl', [
     };
     $scope.toggleAlert = function() {
       $scope.alert.isShow = !$scope.alert.isShow;
+    };
+    $scope.toggleForm = function() {
+      $scope.isOpenForm = !$scope.isOpenForm;
     };
     $scope.toggleConfirm = function(isAgree) {
       $scope.isConfirmShown = !$scope.isConfirmShown;
@@ -194,8 +199,8 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
         }
 
         function getElementOffset() {
-          var topCoord = isMobile ? $document[0].documentElement.clientTop: scrollContent.getBoundingClientRect().top;
-          var leftCoord = isMobile ? $document[0].documentElement.clientLeft: scrollContent.getBoundingClientRect().left
+          var topCoord = isMobile ? $document[0].documentElement.clientTop : scrollContent.getBoundingClientRect().top;
+          var leftCoord = isMobile ? $document[0].documentElement.clientLeft : scrollContent.getBoundingClientRect().left;
           var box = element[0].getBoundingClientRect();
 
           return {
