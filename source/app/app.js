@@ -153,8 +153,8 @@ app.directive('draggable', ['$document', '$window', '$timeout', function ($docum
 
         var burger = phoneBorder.children().children();
         var burgerPosition = {
-          x: burger[0].getBoundingClientRect().x,
-          y: burger[0].getBoundingClientRect().y
+          x: burger[1].getBoundingClientRect().x,
+          y: burger[1].getBoundingClientRect().y
         };
 
         element.on('mousedown', mousedown);
