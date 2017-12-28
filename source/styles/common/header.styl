@@ -13,10 +13,13 @@
     background-color: #1e2b6c;
 
     background-image: url("../images/mobile/header-bg.png");
-    background-size: 640px 620px;
+    background-size: 100% auto;
+  }
+  @media screen and (max-width: 640px) {
+    background-size: auto 620px;
   }
   @media screen and (max-width: 480px) {
-    background-size: 320px 310px;
+    background-size: 100% auto;
   }
 
   & > .container {
