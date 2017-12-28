@@ -118,12 +118,12 @@
                     <div class="form-group" ng-class="{'is-show': isOpenForm}">
                         <label class="form-fieldset form-fieldset--username">
                             <input class="form-fieldset__input" type="text" name="username" ng-model="request.username"
-                                   ng-pattern="/^[A-ZА-Яa-zа-яё]+$/" ng-required="true" autocomplete="off"/>
+                                   ng-pattern="/^[a-zа-яё\s]{1,100}$/i" ng-required="true" autocomplete="off"/>
                             <span class="form-fieldset__label">Имя</span>
                         </label>
                         <label class="form-fieldset form-fieldset--mail">
                             <input class="form-fieldset__input" type="text" name="email" ng-model="request.email"
-                                   ng-pattern="/^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*[a-zA-Z]{2,6}$/"
+                                   ng-pattern="/^[a-z0-9!#$+=^_~-]+(?:\.[a-z0-9!#$+=^_~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i"
                                    ng-required="true" autocomplete="off"/>
                             <span class="form-fieldset__label">Электронная почта</span>
                         </label>
@@ -278,12 +278,12 @@
                     <div class="form-group">
                         <label class="form-fieldset form-fieldset--username">
                             <input class="form-fieldset__input" type="text" name="username" ng-model="request.username"
-                                   ng-pattern="/^[A-ZА-Яa-zа-яё]+$/" ng-required="true" autocomplete="off"/>
+                                   ng-pattern="/^[a-zа-яё\s]{1,100}$/i" ng-required="true" autocomplete="off"/>
                             <span class="form-fieldset__label">Имя</span>
                         </label>
                         <label class="form-fieldset form-fieldset--mail">
                             <input class="form-fieldset__input" type="text" name="email" ng-model="request.email"
-                                   ng-pattern="/^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\.)*[a-zA-Z]{2,6}$/"
+                                   ng-pattern="/^[a-z0-9!#$+=^_~-]+(?:\.[a-z0-9!#$+=^_~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i"
                                    ng-required="true" autocomplete="off"/>
                             <span class="form-fieldset__label">Электронная почта</span>
                         </label>
