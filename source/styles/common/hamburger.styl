@@ -12,6 +12,11 @@
   border: 0;
   margin: 0;
   overflow: visible;
+
+
+  @media screen and (max-width: 480px) {
+    padding: 8px;
+  }
 }
 
 .hamburger-box {
@@ -19,6 +24,11 @@
   height: 24px;
   display: inline-block;
   position: relative;
+
+  @media screen and (max-width: 480px) {
+    width: 18px;
+    height: 12px;
+  }
 }
 
 .hamburger-inner {
@@ -50,6 +60,21 @@
   &::after {
     bottom: -8px;
     transform: translate3d(8px, 0, 0) rotate(-45deg) scale(0.7, 1);
+  }
+
+  @media screen and (max-width: 480px) {
+    &, &::before, &::after {
+      width: 18px;
+      height: 2px;
+    }
+    &::before {
+      top: -4px;
+      transform: translate3d(6px, 0, 0) rotate(45deg) scale(0.7, 1);
+    }
+    &::after {
+      bottom: -4px;
+      transform: translate3d(6px, 0, 0) rotate(-45deg) scale(0.7, 1);
+    }
   }
 }
 

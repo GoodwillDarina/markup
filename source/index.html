@@ -27,9 +27,9 @@
                     </h1>
                 </div>
                 <div class="header-actions is-mobile">
-                    <button class="header-actions__btn-video js-open-video" type="button" ng-click="toggleVideo()">
+                    <a class="header-actions__btn-video js-open-video" ng-href="{src: 'YT_URL'}" target="_blank">
                         WATCH VIDEO
-                    </button>
+                    </a>
 
                     <ul class="stores">
                         <li class="stores-item">
@@ -127,7 +127,15 @@
                                    ng-required="true" autocomplete="off"/>
                             <span class="form-fieldset__label">Электронная почта</span>
                         </label>
-                        <button class="form__submit" type="submit" ng-disabled="subscribeForm.$invalid">Отправить
+                        <label class="form-fieldset form-checkbox is-mobile">
+                            <input class="form-checkbox__hidden" type="checkbox" name="agreeUser" ng-model="agreeUser"/>
+                            <span class="form-checkbox__label">Я на все согласен, все прочитал и понимаю все риски.</span>
+                        </label>
+                        <button class="form__submit" type="submit" ng-disabled="subscribeForm.$invalid" ng-if="!isShownMobile">
+                            Отправить
+                        </button>
+                        <button class="form__submit" type="submit" ng-disabled="subscribeForm.$invalid || !agreeUser" ng-if="isShownMobile">
+                            Отправить
                         </button>
                     </div>
                 </form>

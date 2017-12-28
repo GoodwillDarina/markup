@@ -23,10 +23,6 @@ body {
   @media screen and (max-width: 1366px) and (min-width: 1023px) {
     width: 1366px;
   }
-
-  @media screen and (max-width: 640px) {
-    width: 640px;
-  }
 }
 main {
   max-width: 1440px;
@@ -46,6 +42,9 @@ main {
 
   @media screen and (max-width: 1023px) {
     padding: 0 30px;
+  }
+  @media screen and (max-width: 480px) {
+    padding: 0 15px;
   }
 }
 .is-mobile {
@@ -90,6 +89,10 @@ main {
   @media screen and (max-width: 1023px) {
     width: 80%;
   }
+
+  @media screen and (max-width: 480px) {
+    width: 280px;
+  }
 }
 .ng-modal-close-x {
   visibility: hidden;
@@ -128,6 +131,10 @@ main {
   &::after {
     transform: rotate(45deg);
   }
+
+  @media screen and (max-width: 480px) {
+    right: -30px;
+  }
 }
 .ng-modal-title {
   margin: 10px 0;
@@ -138,6 +145,11 @@ main {
   font-size: 42px;
   font-weight: 800;
   line-height: 42px;
+
+  @media screen and (max-width: 480px) {
+    font-size: 22px;
+    line-height: 22px;
+  }
 }
 .simplebar-scrollbar {
   cursor: pointer;
@@ -156,6 +168,22 @@ main {
 
   &:checked + .form-checkbox__label::before {
     background-image: url("../images/icons/checkbox-checked.svg");
+  }
+
+  @media screen and (max-width: 1023px) {
+    &:checked + .form-checkbox__label::before {
+      background: $bg-color;
+    }
+
+    &:checked + .form-checkbox__label::after {
+      left: 75px;
+      transform: translateX(-100%);
+    }
+  }
+  @media screen and (max-width: 480px) {
+    &:checked + .form-checkbox__label::after {
+      left: 32px;
+    }
   }
 }
 .form-checkbox__label {
@@ -180,7 +208,59 @@ main {
     background: transparent url("../images/icons/checkbox.svg") no-repeat center;
     background-size: 32px 32px;
   }
+
+  @media screen and (max-width: 1023px) {
+    padding-left: 100px;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      display: block;
+      width: 80px;
+      height: 40px;
+      border-radius: 40px;
+      text-indent: -9999px;
+      background: grey;
+      cursor: pointer;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      width: 30px;
+      height: 30px;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    padding-left: 45px;
+
+    font-size: 12px;
+    line-height: 18px;
+
+    &::before {
+      width: 35px;
+      height: 20px;
+      border-radius: 20px;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      size: 14px;
+    }
+  }
 }
+
 .modal-form__btn {
   display: block;
   width: 265px;

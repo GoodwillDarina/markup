@@ -38,6 +38,8 @@ app.controller('landingCtrl', [
     $scope.isConfirmShown = false;
     $scope.agreeUser = false;
 
+    $scope.isShownMobile = clientWidth < 1024;
+
     $scope.request = {
         username: '',
         email: ''
@@ -111,7 +113,11 @@ app.controller('landingCtrl', [
       //function for success message
       $timeout(function () {
         isSubmitInProgress = false;
-        $scope.toggleConfirm();
+        if(!$scope.isShownMobile) {
+          $scope.toggleConfirm();
+        } else {
+          $scope.toggleAlert();
+        }
       });
     };
 
