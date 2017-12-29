@@ -31,6 +31,9 @@ app.controller('landingCtrl', [
   '$scope', '$timeout', '$document', '$window', function ($scope, $timeout, $document, $window) {
     var isSubmitInProgress = false;
     var clientWidth = $document[0].documentElement.clientWidth;
+    var header = $document[0].documentElement.querySelector('.header');
+    var headerForm = $document[0].documentElement.querySelector('.header-form');
+    var headerFormHeightInit, headerHeight;
 
     $scope.isVideoShown = false;
     $scope.isLoadDrag = false;
@@ -53,24 +56,22 @@ app.controller('landingCtrl', [
       $timeout(function () {
         $scope.isAnimate = clientWidth >= 1024;
 
-        if (clientWidth >= 1024) {
-          if(!isMobile) {
-            scrollElement = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-scroll-content');
-            scrollContent = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-content');
-          } else {
-            scrollElement = $window;
-            scrollContent = $document[0].documentElement;
-          }
-
-          var elementFixed = $document[0].documentElement.querySelector('.header-form');
-          var elementTop = elementFixed.getBoundingClientRect().top + $window.pageYOffset - $document[0].documentElement.clientTop;
-          var elementBottom = $document[0].documentElement.querySelector('.footer').offsetTop;
+        if(!isMobile) {
+          scrollElement = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-scroll-content');
+          scrollContent = $document[0].documentElement.querySelector('.page-wrap').querySelector('.simplebar-content');
+        } else {
+          scrollElement = $window;
+          scrollContent = $document[0].documentElement;
+        }
+        var elementFixed = $document[0].documentElement.querySelector('.header-form');
+        var elementTop = elementFixed.getBoundingClientRect().top + $window.pageYOffset - $document[0].documentElement.clientTop;
+        var elementBottom = $document[0].documentElement.querySelector('.footer').offsetTop;
 
 
-          scrollElement.addEventListener('scroll', function () {
-            var scrollTop = isMobile ? scrollContent.scrollTop : scrollElement.scrollTop;
-            var scrollBottom = isMobile ? scrollContent.clientHeight + scrollTop : scrollElement.clientHeight + scrollTop;
-
+        scrollElement.addEventListener('scroll', function () {
+          var scrollTop = isMobile ? scrollContent.scrollTop : scrollElement.scrollTop;
+          var scrollBottom = isMobile ? scrollContent.clientHeight + scrollTop : scrollElement.clientHeight + scrollTop;
+          if(clientWidth >= 1024) {
             if(scrollTop >= elementTop && scrollBottom <= elementBottom) {
               elementFixed.classList.add('fixed');
               elementFixed.classList.remove('fixed-bottom');
@@ -79,10 +80,24 @@ app.controller('landingCtrl', [
             } else if(scrollBottom >= elementBottom) {
               elementFixed.classList.add('fixed-bottom');
             }
-          })
-        }
+          } else {
+            if(scrollTop >= elementTop) {
+              elementFixed.classList.add('fixed');
+            } else if(scrollTop < elementTop) {
+              elementFixed.classList.remove('fixed');
+            }
+          }
+
+        });
+
 
         $scope.isLoadDrag = true;
+
+        if(clientWidth < 1024) {
+            headerFormHeightInit = headerForm.offsetHeight;
+            headerHeight = header.offsetHeight;
+            header.style.height = headerHeight + 'px';
+        }
       });
     };
 
@@ -93,13 +108,17 @@ app.controller('landingCtrl', [
       $scope.alert.isShow = !$scope.alert.isShow;
     };
     $scope.toggleForm = function() {
+
       $scope.isOpenForm = !$scope.isOpenForm;
+
+      $timeout(function() {
+        header.style.height = headerHeight - headerFormHeightInit + headerForm.offsetHeight + 'px';
+      });
     };
     $scope.toggleConfirm = function(isAgree) {
       $scope.isConfirmShown = !$scope.isConfirmShown;
 
       if(isAgree) {
-        console.warn('agreeUser');
         $scope.toggleAlert();
       }
     };
