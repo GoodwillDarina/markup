@@ -14,14 +14,42 @@ var app = angular.module('ngApp', ['ngAnimate', 'ngTouch', 'ngModal', 'pascalpre
 app.config(['$translateProvider', function ($translateProvider) {
   $translateProvider.translations('en', {
 	'YT_URL': 'https://www.youtube.com/embed/b_cnm-30frQ?rel=0&enablejsapi=1',
+	'APP_TITLE': 'Social AR Paint for iOS with Blockchain and Cryptocurrency',
+	'APP_DESCRIPTION': 'View amazing AR (Augment Reality) paintings, create your own, and earn crypto coins for helping our community. Drimz is an iOS application with own blockchain and crypto currency DCN.',
+	'WATCH_VIDEO_BTN': 'WATCH VIDEO',
+	'DRAG_ME_LABEL': 'DRAG ME',
 	'INTRO_HEADING': 'AR editor & community on blockchain steroids',
+	'PRE_ICO_FORM_HERO_LABEL': 'Learn more about us and our investment offer (pre-ICO):',
+	'PRE_ICO_FORM_HERO_LABEL_M': 'Learn more about us and our investment offer (pre-ICO)',
+	'PRE_ICO_FORM_NAME_PLACEHOLDER': 'Name',
+	'PRE_ICO_FORM_EMAIL_PLACEHOLDER': 'Email',
+	'PRE_ICO_FORM_SEND_BTN': 'Learn More',
+	'PRE_ICO_UA_TITLE': '',	
+	'PRE_ICO_UA_TEXT': 'I hereby agree that my name and email will be received by this website for further use limited by points stated in our T&C document.',
+	'PRE_ICO_SUBMIT_BTN': 'Submit Inquiry',
+	'PRE_ICO_SUBMIT_SUCCESS_TITLE': 'Successfully Sent!',
+	'PRE_ICO_SUBMIT_SUCCESS_TEXT': 'Thank you for your inquiry, we\'ll do our best to promptly contact you and provide all the necessary information to help you make the decision about participating in our ICO.',
 	'INTRO_TEXT': 'Re-imagine the world around you by adding new features to ordinary objects. Enjoy the benefits of blockchain and earn cryptocurrency for helping our community.'
   });
 
   $translateProvider.translations('ru', {
 	'YT_URL': 'https://www.youtube.com/embed/3l6YcgeC9lw?rel=0&enablejsapi=1',
-	'INTRO_HEADING': 'AR editor & community on blockchain steroids',
-	'INTRO_TEXT': 'Re-imagine the world around you by adding new features to ordinary objects. Enjoy the benefits of blockchain and earn cryptocurrency for helping our community.'
+	'APP_TITLE': 'Социальный редактор AR (дополненной реальности) для iOS блокчейном и криптовалютой',	
+	'APP_DESCRIPTION': 'Просматривайте восхитительные образы AR (дополненной реальности), создавайте свои, и зарабатывайте криптовалюту, помогая сообществу. Дримз - это iOS приложение с собственным блокчейн и криптовалютой DCN.',	
+	'WATCH_VIDEO_BTN': 'СМОТРЕТЬ ВИДЕО',	
+	'DRAG_ME_LABEL': 'Подвигай меня',
+	'INTRO_HEADING': 'AR редактор и сообщество c блокчейном и криптовалютой',
+	'PRE_ICO_FORM_HERO_LABEL': 'Узнайте о нас и об инвестициях в наш проект (pre-ICO):',
+	'PRE_ICO_FORM_HERO_LABEL_M': 'Узнайте о нас и об инвестициях в наш проект (pre-ICO)',	
+	'PRE_ICO_FORM_NAME_PLACEHOLDER': 'Имя',
+	'PRE_ICO_FORM_EMAIL_PLACEHOLDER': 'Email',	
+	'PRE_ICO_FORM_SEND_BTN': 'Узнать больше',
+	'PRE_ICO_UA_TITLE': '',
+	'PRE_ICO_UA_TEXT': 'Я подтверждаю свое согласие на обработку своих персональных данных (имени и email) в соответствии с правилами обработки, хранения и использования персональных данных, приведенными в следующем документе.',	
+	'PRE_ICO_SUBMIT_BTN': 'Отправить заявку',
+	'PRE_ICO_SUBMIT_SUCCESS_TITLE': 'Отправка успешна!',
+	'PRE_ICO_SUBMIT_SUCCESS_TEXT': 'Спасибо за заявку, в ближайшее время мы свяжемся с Вами и предоставим всю информацию о нашем проекте, которая поможет Вам принять решение об участии в нашем pre-ICO.',	
+	'INTRO_TEXT': 'Преобрази мир вокруг себя, создавая новые идеи и образы из обыденных и привычных вещей. Используй преимущества блокчейн и получай криптовалюту за помощь сообществу.'
   });
   $translateProvider.fallbackLanguage('en');
   $translateProvider.uniformLanguageTag('iso639-1').determinePreferredLanguage();
@@ -106,6 +134,19 @@ app.controller('landingCtrl', [
     };
     $scope.toggleAlert = function() {
       $scope.alert.isShow = !$scope.alert.isShow;
+	  
+	  if ($scope.alert.isShow == true) {
+		  var i = firebase.database().ref().child("clients").push().key;
+		  
+		  firebase.database().ref("clients/" + i).set({
+			id: i,
+			name: $scope.request.username,
+			email: $scope.request.email,
+			date: (new Date).toLocaleString("ru"),
+			timestamp: Math.floor(Date.now() / 1e3)
+		  }); 		  
+	  }
+	  
     };
     $scope.toggleForm = function() {
 

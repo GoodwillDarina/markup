@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Drimz</title>
+    <title>Social AR Paint for iOS with Blockchain and Cryptocurrency</title>
+    <meta name="description" content="View amazing AR (Augment Reality) paintings, create your own, and earn crypto coins for helping our community. Drimz is an iOS application with own blockchain and crypto currency DCN."/>
+	<meta name="keywords" content="drimz, AR painter, AR editor, social AR, Augment Reality for iOS, AR for iOS, social augmented reality, AR blockchain, AR crypto, AR cryptocurrency"/>	
     <meta name="theme-color" content="#1e2b6c">
     <meta name="description" content="">
     <link href="./images/favicon.ico" rel="shortcut icon">
@@ -27,8 +29,8 @@
                     </h1>
                 </div>
                 <div class="header-actions is-mobile">
-                    <a class="header-actions__btn-video js-open-video" ng-href="https://www.youtube.com/watch?v=fRj34o4hN4I" target="_blank">
-                        WATCH VIDEO
+                    <a class="header-actions__btn-video js-open-video" translate-attr="{href: 'YT_URL'}" target="_blank">
+                        {{ 'WATCH_VIDEO_BTN' | translate }}
                     </a>
 
                     <ul class="stores">
@@ -48,7 +50,7 @@
                     </p>
 
                     <button class="header-intro__btn-video js-open-video" type="button" ng-click="toggleVideo()">
-                        WATCH VIDEO
+                        {{ 'WATCH_VIDEO_BTN' | translate }}
                     </button>
 
                     <ul class="header-intro-social social is-mobile">
@@ -68,7 +70,7 @@
                     <div class="layer-phone under-front"
                          ng-class="{'is-animate' : isAnimate}">
                         <div class="layer-burger">
-                            <div class="layer-hint">Подвигай меня</div>
+                            <div class="layer-hint">{{ 'DRAG_ME_LABEL' | translate }}</div>
                             <img src="./images/header/burger.png" width="349" height="311" alt=""/>
                         </div>
                         <img class="layer-border" src="./images/header/iphone.svg" width="326" height="670" alt="">
@@ -94,7 +96,7 @@
                 </div>
             </div>
             <section class="header-form">
-                <h2 class="visually-hidden">Форма подписки</h2>
+                <h2 class="visually-hidden">Subscribe for pre-ICO</h2>
 
                 <form class="form container" method="post" name="subscribeForm" ng-submit="submitSubscribe(request)">
                     <ul class="form-stores stores">
@@ -105,9 +107,9 @@
                             </a>
                         </li>
                     </ul>
-                    <b class="form__heading">Подпишись, чтобы ничего не пропустить: </b>
+                    <b class="form__heading">{{ 'PRE_ICO_FORM_HERO_LABEL' | translate }} </b>
                     <a class="form__heading-btn is-mobile" ng-class="{'is-active': isOpenForm}" ng-click="toggleForm()">
-                        Подпишись, чтобы ничего не пропустить
+                        {{ 'PRE_ICO_FORM_HERO_LABEL_M' | translate }}
                         <span class="hamburger">
                           <span class="hamburger-box">
                             <span class="hamburger-inner"></span>
@@ -119,23 +121,23 @@
                         <label class="form-fieldset form-fieldset--username">
                             <input class="form-fieldset__input" type="text" name="username" ng-model="request.username"
                                    ng-pattern="/^[a-zа-яё\s]{1,100}$/i" ng-required="true" autocomplete="off"/>
-                            <span class="form-fieldset__label">Имя</span>
+                            <span class="form-fieldset__label">{{ 'PRE_ICO_FORM_NAME_PLACEHOLDER' | translate }}</span>
                         </label>
                         <label class="form-fieldset form-fieldset--mail">
                             <input class="form-fieldset__input" type="text" name="email" ng-model="request.email"
                                    ng-pattern="/^[a-z0-9!#$+=^_~-]+(?:\.[a-z0-9!#$+=^_~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i"
                                    ng-required="true" autocomplete="off"/>
-                            <span class="form-fieldset__label">Электронная почта</span>
+                            <span class="form-fieldset__label">{{ 'PRE_ICO_FORM_EMAIL_PLACEHOLDER' | translate }}</span>
                         </label>
                         <label class="form-fieldset form-checkbox is-mobile">
                             <input class="form-checkbox__hidden" type="checkbox" name="agreeUser" ng-model="agreeUser"/>
-                            <span class="form-checkbox__label">Я на все согласен, все прочитал и понимаю все риски.</span>
+                            <span class="form-checkbox__label">{{ 'PRE_ICO_UA_TEXT' | translate }}</span>
                         </label>
                         <button class="form__submit" type="submit" ng-disabled="subscribeForm.$invalid" ng-if="!isShownMobile">
-                            Отправить
+                            {{ 'PRE_ICO_FORM_SEND_BTN' | translate }}
                         </button>
                         <button class="form__submit" type="submit" ng-disabled="subscribeForm.$invalid || !agreeUser" ng-if="isShownMobile">
-                            Отправить
+                            {{ 'PRE_ICO_FORM_SEND_BTN' | translate }}
                         </button>
                     </div>
                 </form>
@@ -270,24 +272,24 @@
     <footer class="page-footer footer">
         <div class="container">
             <section class="footer-form">
-                <h2 class="visually-hidden">Форма подписки</h2>
+                <h2 class="visually-hidden">Pre-ico application form</h2>
 
                 <form class="form container" method="post" name="subscribeForm" ng-submit="submitSubscribe(request)">
-                    <b class="form__heading">Подпишись, чтобы ничего не пропустить: </b>
+                    <b class="form__heading">{{ 'PRE_ICO_FORM_HERO_LABEL' | translate }}</b>
 
                     <div class="form-group">
                         <label class="form-fieldset form-fieldset--username">
                             <input class="form-fieldset__input" type="text" name="username" ng-model="request.username"
                                    ng-pattern="/^[a-zа-яё\s]{1,100}$/i" ng-required="true" autocomplete="off"/>
-                            <span class="form-fieldset__label">Имя</span>
+                            <span class="form-fieldset__label">{{ 'PRE_ICO_FORM_NAME_PLACEHOLDER' | translate }}</span>
                         </label>
                         <label class="form-fieldset form-fieldset--mail">
                             <input class="form-fieldset__input" type="text" name="email" ng-model="request.email"
                                    ng-pattern="/^[a-z0-9!#$+=^_~-]+(?:\.[a-z0-9!#$+=^_~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i"
                                    ng-required="true" autocomplete="off"/>
-                            <span class="form-fieldset__label">Электронная почта</span>
+                            <span class="form-fieldset__label">{{ 'PRE_ICO_FORM_EMAIL_PLACEHOLDER' | translate }}</span>
                         </label>
-                        <button class="form__submit" type="submit" ng-disabled="subscribeForm.$invalid">Отправить
+                        <button class="form__submit" type="submit" ng-disabled="subscribeForm.$invalid">{{ 'PRE_ICO_FORM_SEND_BTN' | translate }}
                         </button>
                     </div>
                 </form>
@@ -309,23 +311,36 @@
     <modal-dialog show="isVideoShown" dialog-title="" on-close="toggleVideo" aria-label="video-dialog">
         <iframe width="100%" height="645px" translate-attr="{src: 'YT_URL'}" frameborder="0" allowfullscreen></iframe>
     </modal-dialog>
-    <modal-dialog show="isConfirmShown" dialog-title="Второй этап заявки" on-close="toggleConfirm">
+    <modal-dialog show="isConfirmShown" dialog-title="{{ 'PRE_ICO_UA_TITLE' | translate }}" on-close="toggleConfirm">
         <div class="modal-form">
             <label class="form-checkbox">
                 <input class="form-checkbox__hidden" type="checkbox" name="agreeUser" ng-model="agreeUser"/>
-                <span class="form-checkbox__label">Я на все согласен, все прочитал и понимаю все риски.</span>
+                <span class="form-checkbox__label">{{ 'PRE_ICO_UA_TEXT' | translate }}</span>
             </label>
 
             <button class="modal-form__btn" type="button" ng-click="toggleConfirm(true)" ng-disabled="!agreeUser">
-                Отправить заявку
+                {{ 'PRE_ICO_SUBMIT_BTN' | translate }}
             </button>
         </div>
     </modal-dialog>
-    <modal-dialog show="alert.isShow" dialog-title="{{ alert.title }}" on-close="toggleAlert" aria-label="alert-dialog">
-        <p>{{ alert.message }}</p>
+    <modal-dialog show="alert.isShow" dialog-title="{{ 'PRE_ICO_SUBMIT_SUCCESS_TITLE' | translate }}" on-close="toggleAlert" aria-label="alert-dialog">
+        <p>{{ 'PRE_ICO_SUBMIT_SUCCESS_TEXT' | translate }}</p>
     </modal-dialog>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBfpCSB_kG5qPuVPhq4h0ydOJNGMZwSh4Q",
+    authDomain: "drimz-107d7.firebaseapp.com",
+    databaseURL: "https://drimz-107d7.firebaseio.com",
+    projectId: "drimz-107d7",
+    storageBucket: "drimz-107d7.appspot.com",
+    messagingSenderId: "106378355680"
+  };
+  firebase.initializeApp(config);
+</script>
 <script src="./libs/simplebar.js"></script>
 <script src="./libs/angular-translate.min.js"></script>
 <script src="./scripts/app.js"></script>
