@@ -60,7 +60,7 @@ function copyIndex() {
 }
 
 function copyIndexAmp() {
-    return gulp.src('./source/index.amp.html')
+    return gulp.src(['./source/index.amp.html', './source/robots.txt', './source/sitemap.xml'])
         .pipe(gulp.dest('./app'))
         .pipe(reload({stream: true}));
 }
