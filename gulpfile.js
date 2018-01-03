@@ -22,12 +22,13 @@ gulp.task('copy:images', copyImages);
 gulp.task('copy:fonts', copyFonts);
 gulp.task('copy:libraries', copyLibraries);
 gulp.task('copy:css', copyCss);
+gulp.task('copy:indexAmp', copyIndexAmp);
 
 gulp.task('compile:js', compileJs);
 gulp.task('compile:stylus', compileStylus);
 gulp.task('server', startServer);
 
-gulp.task('build', ['clean', 'copy:fonts', 'copy:images', 'copy:libraries', 'compile:js', 'compile:stylus'], copyIndex);
+gulp.task('build', ['clean', 'copy:fonts', 'copy:images', 'copy:libraries', 'copy:indexAmp', 'compile:js', 'compile:stylus'], copyIndex);
 
 gulp.task('watcher:css', ['clean:css', 'compile:stylus'], copyIndex);
 gulp.task('watcher:js', ['clean:js', 'compile:js'], copyIndex);
@@ -54,6 +55,12 @@ function clean() {
 function copyIndex() {
     return gulp.src('./source/index.html')
         .pipe(htmlmin({collapseWhitespace: true}))
+        .pipe(gulp.dest('./app'))
+        .pipe(reload({stream: true}));
+}
+
+function copyIndexAmp() {
+    return gulp.src('./source/index.amp.html')
         .pipe(gulp.dest('./app'))
         .pipe(reload({stream: true}));
 }
